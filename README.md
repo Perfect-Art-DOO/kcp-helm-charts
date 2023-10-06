@@ -1,1 +1,32 @@
-# helm-chats
+# The Chart Repository
+
+## Charts
+
+| chart | helm version | original repo |
+|---|---|---|
+| uniDeploy | 0.1.3 ||
+| aws-ebs-csi-driver | 2.16.0 | https://kubernetes-sigs.github.io/aws-ebs-csi-driver |
+| aws-efs-csi-driver | 2.3.8 | https://github.com/kubernetes-sigs/aws-efs-csi-driver |
+| cert-manager | v1.10.1 | https://charts.jetstack.io |
+| ingress-nginx | 4.5.2 | https://kubernetes.github.io/ingress-nginx |
+| k8s-ephemeral-storage-metrics | 1.0.0 | https://github.com/jmcgrath207/k8s-ephemeral-storage-metrics |
+| kube-prometheus-stack | 43.2.0 | https://prometheus-community.github.io/helm-charts |
+| prometheus-blackbox-exporter | 7.6.1 | https://prometheus-community.github.io/helm-charts |
+| loki-stack | 2.8.9 | https://grafana.github.io/helm-charts |
+| pushprox | 0.1.4 | https://devopstales.github.io/helm-charts |
+| sentry | 18.0.0 | https://sentry-kubernetes.github.io/charts |
+| redis | 14.6.3 | https://github.com/bitnami/charts/tree/main/bitnami/redis |
+| airflow | 8.8.0 | https://github.com/airflow-helm/charts |
+| goldilocks | 6.5.5 | https://github.com/FairwindsOps/charts/tree/master/stable/goldilocks |
+| vertical-pod-autoscaler | 7.0.1 | https://github.com/cowboysysop/charts/tree/master/charts/vertical-pod-autoscaler |
+| sealed-secrets | 2.9.0 | https://github.com/bitnami-labs/sealed-secrets |
+| kubeshark | 40.5 | https://github.com/kubeshark/kubeshark/tree/master/helm-chart |
+| k8s-event-logger | 1.1.4 | k8s-event-logger-1.1.4.tgz |
+
+## How to use
+
+- Create [PAT](https://github.com/settings/tokens)
+- Add private repo
+```bash
+helm repo add charts https://github.com/movos-AG/helm-charts --username <username> --password <app-password>
+```

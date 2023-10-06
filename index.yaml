@@ -1,0 +1,625 @@
+apiVersion: v1
+entries:
+  PushProx:
+  - apiVersion: v1
+    appVersion: 0.1.0
+    created: "2023-09-25T12:06:44.611627752+02:00"
+    description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
+      clients.
+    digest: d694cf18c8065e4af9aa8331130595b7e35ad1e29be389f3b823d60fc2486907
+    name: PushProx
+    type: application
+    urls:
+    - PushProx-0.1.4.tgz
+    version: 0.1.4
+  airflow:
+  - apiVersion: v2
+    appVersion: 2.6.3
+    created: "2023-09-25T12:06:44.624974221+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.helm.sh/stable
+      version: 8.6.4
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.helm.sh/stable
+      version: 10.5.7
+    description: Airflow Helm Chart (User Community) - the standard way to deploy
+      Apache Airflow on Kubernetes with Helm
+    digest: e9f8ca925d3f99ce989c4a1fa09ed6bfc8b20437a67699d7dd310081c90b392d
+    home: https://github.com/airflow-helm/charts/tree/main/charts/airflow
+    icon: https://avatars.githubusercontent.com/u/71061241
+    keywords:
+    - airflow
+    - dag
+    - workflow
+    maintainers:
+    - name: thesuperzapper
+      url: https://github.com/thesuperzapper
+    name: airflow
+    sources:
+    - https://github.com/airflow-helm/charts/tree/main/charts/airflow
+    urls:
+    - airflow-8.8.0.tgz
+    version: 8.8.0
+  - apiVersion: v2
+    appVersion: 2.5.3
+    created: "2023-09-25T12:06:44.618278503+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.helm.sh/stable
+      version: 8.6.4
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.helm.sh/stable
+      version: 10.5.7
+    description: Airflow Helm Chart (User Community) - the standard way to deploy
+      Apache Airflow on Kubernetes with Helm
+    digest: f4248d0efa688f7252a9429cc684f28cd16ef45e01fa7a7304581636f51897a7
+    home: https://github.com/airflow-helm/charts/tree/main/charts/airflow
+    icon: https://airflow.apache.org/_images/pin_large.png
+    keywords:
+    - airflow
+    - dag
+    - workflow
+    maintainers:
+    - name: thesuperzapper
+      url: https://github.com/thesuperzapper
+    name: airflow
+    sources:
+    - https://github.com/airflow-helm/charts/tree/main/charts/airflow
+    urls:
+    - airflow-8.7.0.tgz
+    version: 8.7.0
+  aws-ebs-csi-driver:
+  - apiVersion: v2
+    appVersion: 1.15.0
+    created: "2023-09-25T12:06:44.625760518+02:00"
+    description: A Helm chart for AWS EBS CSI Driver
+    digest: b688d60720b952787d9b312bb9b11db7e896cd5a240bd07f474a8a62ec21806f
+    home: https://github.com/kubernetes-sigs/aws-ebs-csi-driver
+    keywords:
+    - aws
+    - ebs
+    - csi
+    kubeVersion: '>=1.17.0-0'
+    maintainers:
+    - name: Kubernetes Authors
+      url: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/
+    name: aws-ebs-csi-driver
+    sources:
+    - https://github.com/kubernetes-sigs/aws-ebs-csi-driver
+    urls:
+    - aws-ebs-csi-driver-2.16.0.tgz
+    version: 2.16.0
+  aws-efs-csi-driver:
+  - apiVersion: v2
+    appVersion: 1.5.1
+    created: "2023-09-25T12:06:44.626150876+02:00"
+    description: A Helm chart for AWS EFS CSI Driver
+    digest: 7a0b698b7135f64769f3177c635c7fd7344fbbcd464c578fdd6603c19983a7d2
+    home: https://github.com/kubernetes-sigs/aws-efs-csi-driver
+    keywords:
+    - aws
+    - efs
+    - csi
+    kubeVersion: '>=1.17.0-0'
+    maintainers:
+    - name: leakingtapan
+      url: https://github.com/leakingtapan
+    - name: krmichel
+      url: https://github.com/krmichel
+    name: aws-efs-csi-driver
+    sources:
+    - https://github.com/kubernetes-sigs/aws-efs-csi-driver
+    urls:
+    - aws-efs-csi-driver-2.3.8.tgz
+    version: 2.3.8
+  cert-manager:
+  - annotations:
+      artifacthub.io/prerelease: "false"
+      artifacthub.io/signKey: |
+        fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
+        url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
+    apiVersion: v1
+    appVersion: v1.10.1
+    created: "2023-09-25T12:06:44.628162847+02:00"
+    description: A Helm chart for cert-manager
+    digest: 0ee2a692079b64f5306731d3bf76e1bde906e83dc5a60994494e0cd8f36cc04f
+    home: https://github.com/cert-manager/cert-manager
+    icon: https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    kubeVersion: '>= 1.20.0-0'
+    maintainers:
+    - email: cert-manager-maintainers@googlegroups.com
+      name: cert-manager-maintainers
+      url: https://cert-manager.io
+    name: cert-manager
+    sources:
+    - https://github.com/cert-manager/cert-manager
+    urls:
+    - cert-manager-v1.10.1.tgz
+    version: v1.10.1
+  goldilocks:
+  - apiVersion: v2
+    appVersion: v4.6.3
+    created: "2023-09-25T12:06:44.630507333+02:00"
+    dependencies:
+    - condition: vpa.enabled
+      name: vpa
+      repository: https://charts.fairwinds.com/stable
+      version: 1.7.2
+    - condition: metrics-server.enabled
+      name: metrics-server
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.2.4
+    description: 'A Helm chart for running Fairwinds Goldilocks. See https://github.com/FairwindsOps/goldilocks '
+    digest: 214fceba8e077400c86ad7d728df6808c138eeffde259b2efaeccd8c17207470
+    icon: https://raw.githubusercontent.com/FairwindsOps/charts/master/stable/goldilocks/icon.png
+    keywords:
+    - goldilocks
+    - resources
+    - kubernetes
+    maintainers:
+    - name: sudermanjr
+    name: goldilocks
+    sources:
+    - https://github.com/FairwindsOps/goldilocks
+    urls:
+    - goldilocks-6.5.5.tgz
+    version: 6.5.5
+  ingress-nginx:
+  - annotations:
+      artifacthub.io/changes: |
+        - "add lint on chart before release (#9570)"
+        - "ci: remove setup-helm step (#9404)"
+        - "feat(helm): Optionally use cert-manager instead admission patch (#9279)"
+        - "run helm release on main only and when the chart/value changes only (#9290)"
+        - "Update Ingress-Nginx version controller-v1.6.4"
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 1.6.4
+    created: "2023-09-25T12:06:44.63313164+02:00"
+    description: Ingress controller for Kubernetes using NGINX as a reverse proxy
+      and load balancer
+    digest: fbc41b027e0690256af52447baf0715e1d7072eb28f71e4a7f46a3257daee667
+    home: https://github.com/kubernetes/ingress-nginx
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
+    keywords:
+    - ingress
+    - nginx
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - name: rikatz
+    - name: strongjz
+    - name: tao12345666333
+    name: ingress-nginx
+    sources:
+    - https://github.com/kubernetes/ingress-nginx
+    urls:
+    - ingress-nginx-4.5.2.tgz
+    version: 4.5.2
+  k8s-ephemeral-storage-metrics:
+  - annotations:
+      artifacthub.io/license: MIT
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://github.com/jmcgrath207/k8s-ephemeral-storage-metrics
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-09-25T12:06:44.633261686+02:00"
+    description: Ephemeral storage metrics for prometheus operator.
+    digest: 3e0b9f6a7bd6702a226e691cfe9fcbf87b2307ce4383f54b19a9b36c17810006
+    home: https://github.com/jmcgrath207/k8s-ephemeral-storage-metrics
+    keywords:
+    - kubernetes
+    - metrics
+    kubeVersion: '>=1.21.0-0'
+    name: k8s-ephemeral-storage-metrics
+    sources:
+    - https://github.com/jmcgrath207/k8s-ephemeral-storage-metrics
+    urls:
+    - k8s-ephemeral-storage-metrics-1.0.0.tgz
+    version: 1.0.0
+  k8s-event-logger:
+  - apiVersion: v1
+    appVersion: "2.0"
+    created: "2023-09-25T12:06:44.633697343+02:00"
+    description: 'This chart runs a pod that simply watches Kubernetes Events and
+      logs them to stdout in JSON to be collected and stored by your logging solution,
+      e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or
+      [fluent-bit](https://github.com/helm/charts/tree/master/stable/fluent-bit).  https://github.com/max-rocket-internet/k8s-event-logger  Events
+      in Kubernetes log very important information. If are trying to understand what
+      happened in the past then these events show clearly what your Kubernetes cluster
+      was thinking and doing. Some examples:  - Pod events like failed probes, crashes,
+      scheduling related information like `TriggeredScaleUp` or `FailedScheduling`
+      - HorizontalPodAutoscaler events like scaling up and down - Deployment events
+      like scaling in and out of ReplicaSets - Ingress events like create and update  The
+      problem is that these events are simply API objects in Kubernetes and are only
+      stored for about 1 hour. Without some way of storing these events, debugging
+      a problem in the past very tricky. '
+    digest: 7d66a9b0640d07ec489a12ce3a12245fa8f2a0a5665932a4fbd828613a356a8f
+    home: https://github.com/max-rocket-internet/k8s-event-logger
+    icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
+    keywords:
+    - events
+    - logging
+    - Auditing
+    maintainers:
+    - email: max.williams@deliveryhero.com
+      name: max-rocket-internet
+    name: k8s-event-logger
+    sources:
+    - https://github.com/max-rocket-internet/k8s-event-logger
+    urls:
+    - k8s-event-logger-1.1.4.tgz
+    version: 1.1.4
+  kube-prometheus-stack:
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      artifacthub.io/operator: "true"
+    apiVersion: v2
+    appVersion: 0.61.1
+    created: "2023-09-25T12:06:44.650126707+02:00"
+    dependencies:
+    - condition: kubeStateMetrics.enabled
+      name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.24.*
+    - condition: nodeExporter.enabled
+      name: prometheus-node-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.8.*
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 6.48.*
+    description: kube-prometheus-stack collects Kubernetes manifests, Grafana dashboards,
+      and Prometheus rules combined with documentation and scripts to provide easy
+      to operate end-to-end Kubernetes cluster monitoring with Prometheus using the
+      Prometheus Operator.
+    digest: 4888ae060ec696a1eb3ceda7b801498e0d5a010b6a0a62fa7476962a5a493316
+    home: https://github.com/prometheus-operator/kube-prometheus
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: andrew@quadcorps.co.uk
+      name: andrewgkew
+    - email: gianrubio@gmail.com
+      name: gianrubio
+    - email: github.gkarthiks@gmail.com
+      name: gkarthiks
+    - email: kube-prometheus-stack@sisti.pt
+      name: GMartinez-Sisti
+    - email: scott@r6by.com
+      name: scottrigby
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: quentin.bisson@gmail.com
+      name: QuentinBisson
+    name: kube-prometheus-stack
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - kube-prometheus-stack-43.2.0.tgz
+    version: 43.2.0
+  kubeshark:
+  - apiVersion: v2
+    appVersion: "40.5"
+    created: "2023-09-25T12:06:44.650539029+02:00"
+    description: The API Traffic Analyzer for Kubernetes
+    digest: 70a6940749b4eb58c3855ba11721546a7e26db0fe3a393d8e6138da2e97e26b7
+    home: https://kubeshark.co
+    keywords:
+    - kubeshark
+    - packet capture
+    - traffic capture
+    - traffic analyzer
+    - network sniffer
+    - observability
+    - devops
+    - microservice
+    - forensics
+    - api
+    kubeVersion: '>= 1.16.0-0'
+    maintainers:
+    - email: info@kubeshark.co
+      name: Kubeshark
+      url: https://kubeshark.co
+    name: kubeshark
+    sources:
+    - https://github.com/kubeshark/kubeshark/tree/master/helm-chart
+    type: application
+    urls:
+    - kubeshark-40.5.tgz
+    version: "40.5"
+  loki-stack:
+  - apiVersion: v1
+    appVersion: v2.6.1
+    created: "2023-09-25T12:06:44.658304248+02:00"
+    dependencies:
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: ^2.15.2
+    - condition: promtail.enabled
+      name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: ^6.7.4
+    - condition: fluent-bit.enabled
+      name: fluent-bit
+      repository: https://grafana.github.io/helm-charts
+      version: ^2.3.0
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: ~6.43.0
+    - condition: prometheus.enabled
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: ~15.5.3
+    - condition: filebeat.enabled
+      name: filebeat
+      repository: https://helm.elastic.co
+      version: ~7.17.1
+    - condition: logstash.enabled
+      name: logstash
+      repository: https://helm.elastic.co
+      version: ~7.17.1
+    description: 'Loki: like Prometheus, but for logs.'
+    digest: 08c8ca3f77be88fd59dfb53814779ddb6421b9ed9ae60f2676cbd02d3fd9578f
+    home: https://grafana.com/loki
+    icon: https://raw.githubusercontent.com/grafana/loki/master/docs/sources/logo.png
+    kubeVersion: ^1.10.0-0
+    maintainers:
+    - email: lokiproject@googlegroups.com
+      name: Loki Maintainers
+    name: loki-stack
+    sources:
+    - https://github.com/grafana/loki
+    urls:
+    - loki-stack-2.8.9.tgz
+    version: 2.8.9
+  prometheus-blackbox-exporter:
+  - apiVersion: v2
+    appVersion: 0.23.0
+    created: "2023-09-25T12:06:44.658987021+02:00"
+    description: Prometheus Blackbox Exporter
+    digest: f936e3ab0f1f0019f57f790394e04fb6660000866413ea169b203877371068f5
+    home: https://github.com/prometheus/blackbox_exporter
+    keywords:
+    - prometheus
+    - blackbox
+    - monitoring
+    maintainers:
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    - email: gianrubio@gmail.com
+      name: gianrubio
+    - email: me@sota.sh
+      name: rsotnychenko
+    - email: monotek23@gmail.com
+      name: monotek
+    name: prometheus-blackbox-exporter
+    sources:
+    - https://github.com/prometheus/blackbox_exporter
+    - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter
+    type: application
+    urls:
+    - prometheus-blackbox-exporter-7.6.1.tgz
+    version: 7.6.1
+  redis:
+  - annotations:
+      category: Database
+    apiVersion: v2
+    appVersion: 6.2.4
+    created: "2023-09-25T12:06:44.66174041+02:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: Open source, advanced key-value store. It is often referred to as
+      a data structure server since keys can contain strings, hashes, lists, sets
+      and sorted sets.
+    digest: 99de758c6f903c67d78bf8db837810c85f8619bdffa0e707b7f70d86089a7cf0
+    home: https://github.com/bitnami/charts/tree/master/bitnami/redis
+    icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: redis
+    sources:
+    - https://github.com/bitnami/bitnami-docker-redis
+    - http://redis.io/
+    urls:
+    - redis-14.6.3.tgz
+    version: 14.6.3
+  sealed-secrets:
+  - annotations:
+      category: DeveloperTools
+    apiVersion: v2
+    appVersion: v0.21.0
+    created: "2023-09-25T12:06:44.662434009+02:00"
+    description: Helm chart for the sealed-secrets controller.
+    digest: d90b385dadb4944044e10d0b2165b05c9e3ca83af525ca2759ae1c6f0b43d860
+    home: https://github.com/bitnami-labs/sealed-secrets
+    icon: https://bitnami.com/assets/stacks/sealed-secrets/img/sealed-secrets-stack-220x234.png
+    keywords:
+    - secrets
+    - sealed-secrets
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - name: Bitnami
+      url: https://github.com/bitnami-labs/sealed-secrets
+    name: sealed-secrets
+    type: application
+    urls:
+    - sealed-secrets-2.9.0.tgz
+    version: 2.9.0
+  sentry:
+  - apiVersion: v2
+    appVersion: 23.3.1
+    created: "2023-09-25T12:06:44.684640646+02:00"
+    dependencies:
+    - condition: sourcemaps.enabled
+      name: memcached
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.1.5
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.12.1
+    - condition: kafka.enabled
+      name: kafka
+      repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+      version: 16.3.2
+    - condition: clickhouse.enabled
+      name: clickhouse
+      repository: https://sentry-kubernetes.github.io/charts
+      version: 3.2.0
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+      version: 9.0.0
+    - alias: rabbitmq
+      condition: rabbitmq.enabled
+      name: rabbitmq
+      repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+      version: 8.32.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+      version: 10.16.2
+    - condition: nginx.enabled
+      name: nginx
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.0.4
+    description: A Helm chart for Kubernetes
+    digest: 9dd4971cd3fc001fcd21c13a56ee2720eb986927124e9fd2d2d4518f03cdc69c
+    maintainers:
+    - name: sentry-kubernetes
+    name: sentry
+    type: application
+    urls:
+    - sentry-18.0.0.tgz
+    version: 18.0.0
+  uniDeploy:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-09-25T12:06:44.685885141+02:00"
+    description: Universal template
+    digest: 9a03da0fc39618d7396be6f527b58f78e1e371eddea7cebe7d61353f3ccb8bee
+    maintainers:
+    - email: maksim.bunegin@perfectart.com
+      name: Maksim Bunegin
+    - email: sergey.mishukov@perfectart.com
+      name: Serg Mishukov
+    - email: alexey.kovtunovich@perfectart.com
+      name: Alexey Kovtunovich
+    name: uniDeploy
+    type: application
+    urls:
+    - uniDeploy-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-09-25T12:06:44.685552368+02:00"
+    description: Universal template
+    digest: 28758a6a68a539148305411cefb81144272f6071019e0b589dc69e67e80432c8
+    maintainers:
+    - email: maksim.bunegin@perfectart.com
+      name: Maksim Bunegin
+    - email: sergey.mishukov@perfectart.com
+      name: Serg Mishukov
+    - email: alexey.kovtunovich@perfectart.com
+      name: Alexey Kovtunovich
+    name: uniDeploy
+    type: application
+    urls:
+    - uniDeploy-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-09-25T12:06:44.685236589+02:00"
+    description: Universal template
+    digest: 89841fd0b2e5d46be6c1a2777a19e1dee2d6b836fe32659fbfcbebac41d34058
+    maintainers:
+    - email: maksim.bunegin@perfectart.com
+      name: Maksim Bunegin
+    - email: sergey.mishukov@perfectart.com
+      name: Serg Mishukov
+    name: uniDeploy
+    type: application
+    urls:
+    - uniDeploy-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-09-25T12:06:44.684953934+02:00"
+    description: Universal template
+    digest: 93902d8b464ebcc077e91c024c17ae4e915e7c8d670b9892c2653cd12c3f68cd
+    maintainers:
+    - email: maksim.bunegin@perfectart.com
+      name: Maksim Bunegin
+    - email: sergey.mishukov@perfectart.com
+      name: Serg Mishukov
+    name: uniDeploy
+    type: application
+    urls:
+    - uniDeploy-0.1.0.tgz
+    version: 0.1.0
+  vertical-pod-autoscaler:
+  - annotations:
+      artifacthub.io/signKey: |
+        fingerprint: 9E57D2479D48B84463EF491F66D280CE667AD6C8
+        url: https://cowboysysop.github.io/charts/pgp-public-key-2022-02-19.asc
+      kubeVersion: '>=1.22'
+    apiVersion: v2
+    appVersion: 0.13.0
+    created: "2023-09-25T12:06:44.687334577+02:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami/
+      version: 2.2.4
+    description: Set of components that automatically adjust the amount of CPU and
+      memory requested by pods running in the Kubernetes Cluster
+    digest: 12dad14dda7b638654b73b94bffce378891d6a69fb576bfe0dbd498b7ae631b5
+    home: https://github.com/kubernetes/autoscaler
+    icon: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.svg
+    maintainers:
+    - email: sebastien.prudhomme@gmail.com
+      name: sebastien-prudhomme
+    name: vertical-pod-autoscaler
+    sources:
+    - https://github.com/kubernetes/autoscaler
+    - https://github.com/cowboysysop/charts/tree/master/charts/vertical-pod-autoscaler
+    urls:
+    - vertical-pod-autoscaler-7.0.1.tgz
+    version: 7.0.1
+generated: "2023-09-25T12:06:44.611143549+02:00"
