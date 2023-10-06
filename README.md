@@ -21,8 +21,7 @@
 
 ## How to use
 
-- Create [PAT](https://github.com/settings/tokens)
-- Add private repo
+- Add github page
 ```bash
-helm repo add charts https://github.com/movos-AG/helm-charts --username <username> --password <app-password>
+helm repo add charts https://movos-ag.github.io/helm-charts
 ```
