@@ -18,10 +18,21 @@
 | sealed-secrets | 2.9.0 | https://github.com/bitnami-labs/sealed-secrets |
 | kubeshark | 40.5 | https://github.com/kubeshark/kubeshark/tree/master/helm-chart |
 | k8s-event-logger | 1.1.4 | k8s-event-logger-1.1.4.tgz |
+|
 
 ## How to use
 
 - Add github page
 ```bash
-helm repo add charts https://movos-ag.github.io/helm-charts
+helm repo add movos-ag_charts https://movos-ag.github.io/helm-charts
 ```
+## How to add chart
+1. download chart tgz to repository
+```bash
+helm pull <repo>/<chart>
+```
+2. index repo
+```bash
+helm repo index .
+```
+3. add changes to README.md
