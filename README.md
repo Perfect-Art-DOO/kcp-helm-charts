@@ -17,8 +17,8 @@
 | vertical-pod-autoscaler | 7.0.1 | https://github.com/cowboysysop/charts/tree/master/charts/vertical-pod-autoscaler |
 | sealed-secrets | 2.9.0 | https://github.com/bitnami-labs/sealed-secrets |
 | kubeshark | 40.5 | https://github.com/kubeshark/kubeshark/tree/master/helm-chart |
-| k8s-event-logger | 1.1.4 | k8s-event-logger-1.1.4.tgz |
-|
+| k8s-event-logger | 1.1.4 | https://github.com/max-rocket-internet/k8s-event-logger |
+| metrics-server | 3.11.0 | https://artifacthub.io/packages/helm/metrics-server/metrics-server |
 
 ## How to use
 
