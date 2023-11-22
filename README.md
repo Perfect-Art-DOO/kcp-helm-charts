@@ -26,7 +26,28 @@
 ```bash
 helm repo add movos-ag_charts https://movos-ag.github.io/helm-charts
 ```
-## How to add chart
+- Update helm repos
+```bash
+helm repo update movos-ag_charts
+```
+- Search helm charts
+```bash
+helm search repo movos-ag_charts
+```
+- Install unideploy helm chart in your current k8s context
+```bash
+helm upgrade --install -f <values-configfile.yaml> -f <values-configfile2.yaml> -f ... <helm-release-name> movos-ag_charts/unideploy
+```
+you can use any helpfull arguments. e.g. 
+```-n <namespace>```
+```--dry-run```
+
+- Install another helm chart in your current k8s context (need extended helming knowledge)
+```bash
+helm upgrade --install -f <values-configfile.yaml> -f <values-configfile2.yaml> -f ... <helm-release-name> movos-ag_charts/<chart-name>
+```
+
+## How to add chart to repo (devops only)
 1. download chart tgz to repository
 ```bash
 helm pull <repo>/<chart>
