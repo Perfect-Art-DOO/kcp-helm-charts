@@ -34,7 +34,7 @@ helm repo update movos-ag_charts
 ```bash
 helm search repo movos-ag_charts
 ```
-- Install unideploy helm chart in your current k8s context
+- Install service via unideploy helm chart in your current k8s context
 ```bash
 helm upgrade --install -f <values-configfile.yaml> -f <values-configfile2.yaml> -f ... <helm-release-name> movos-ag_charts/unideploy
 ```
