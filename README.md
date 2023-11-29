@@ -27,12 +27,17 @@
 helm repo add movos-ag_charts https://movos-ag.github.io/helm-charts
 ```
 ## How to add chart
-1. download chart tgz to repository
+1. download chart and unpack chart to repository
 ```bash
 helm pull <repo>/<chart>
 ```
-2. index repo
+2. make changes and pack chart
+```bash
+helm package ./<chart> --version <version>
+```
+3. 
+4. index repo
 ```bash
 helm repo index .
 ```
-3. add changes to README.md
+5. add changes to README.md and push
