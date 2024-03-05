@@ -42,6 +42,11 @@ helm repo index .
 5. add changes to README.md and push
 
 ## uniDeploy CHANGELOG
+### [0.2.3]
+Replaced behavior of checksum to create deployment when configmap create is true
+
+### [0.2.2]
+Added ability to create ingress and virtualservicess both
 
 ### [0.2.1] - 2024-01-19
 
