@@ -42,6 +42,9 @@ helm repo index .
 5. add changes to README.md and push
 
 ## uniDeploy CHANGELOG
+### [0.2.4]
+Rollme feature disabled
+
 ### [0.2.3]
 Replaced behavior of checksum to create deployment when configmap create is true
 

@@ -3,7 +3,7 @@ entries:
   PushProx:
   - apiVersion: v1
     appVersion: 0.1.0
-    created: "2024-03-05T15:06:25.941316597+07:00"
+    created: "2024-03-19T13:00:50.465408442+07:00"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: d694cf18c8065e4af9aa8331130595b7e35ad1e29be389f3b823d60fc2486907
@@ -15,7 +15,7 @@ entries:
   actions-runner-controller:
   - apiVersion: v2
     appVersion: 0.27.5
-    created: "2024-03-05T15:06:25.950973754+07:00"
+    created: "2024-03-19T13:00:50.473550843+07:00"
     description: A Kubernetes controller that operates self-hosted runners for GitHub
       Actions on your Kubernetes cluster.
     digest: 914463630daa916a780f5413e39860b6898d39ea3a0e94adf4414fa6ddec6e1d
@@ -38,7 +38,7 @@ entries:
         url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
     apiVersion: v1
     appVersion: v1.10.1
-    created: "2024-03-05T15:06:25.956220081+07:00"
+    created: "2024-03-19T13:00:50.477347687+07:00"
     description: A Helm chart for cert-manager
     digest: 0ee2a692079b64f5306731d3bf76e1bde906e83dc5a60994494e0cd8f36cc04f
     home: https://github.com/cert-manager/cert-manager
@@ -62,7 +62,7 @@ entries:
   goldilocks:
   - apiVersion: v2
     appVersion: v4.6.3
-    created: "2024-03-05T15:06:25.960224018+07:00"
+    created: "2024-03-19T13:00:50.48064894+07:00"
     dependencies:
     - condition: vpa.enabled
       name: vpa
@@ -98,7 +98,7 @@ entries:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
     appVersion: 1.6.4
-    created: "2024-03-05T15:06:25.964233446+07:00"
+    created: "2024-03-19T13:00:50.484458178+07:00"
     description: Ingress controller for Kubernetes using NGINX as a reverse proxy
       and load balancer
     digest: fbc41b027e0690256af52447baf0715e1d7072eb28f71e4a7f46a3257daee667
@@ -127,7 +127,7 @@ entries:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:25.964469575+07:00"
+    created: "2024-03-19T13:00:50.484671383+07:00"
     description: Ephemeral storage metrics for prometheus operator.
     digest: 3e0b9f6a7bd6702a226e691cfe9fcbf87b2307ce4383f54b19a9b36c17810006
     home: https://github.com/jmcgrath207/k8s-ephemeral-storage-metrics
@@ -144,7 +144,7 @@ entries:
   k8s-event-logger:
   - apiVersion: v1
     appVersion: "2.0"
-    created: "2024-03-05T15:06:25.965143565+07:00"
+    created: "2024-03-19T13:00:50.485282885+07:00"
     description: 'This chart runs a pod that simply watches Kubernetes Events and
       logs them to stdout in JSON to be collected and stored by your logging solution,
       e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or
@@ -185,7 +185,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v0.69.1
-    created: "2024-03-05T15:06:26.014632595+07:00"
+    created: "2024-03-19T13:00:50.535966578+07:00"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -252,7 +252,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: 0.61.1
-    created: "2024-03-05T15:06:25.98706959+07:00"
+    created: "2024-03-19T13:00:50.509475121+07:00"
     dependencies:
     - condition: kubeStateMetrics.enabled
       name: kube-state-metrics
@@ -304,7 +304,7 @@ entries:
   kubeshark:
   - apiVersion: v2
     appVersion: "40.5"
-    created: "2024-03-05T15:06:26.015445248+07:00"
+    created: "2024-03-19T13:00:50.536505251+07:00"
     description: The API Traffic Analyzer for Kubernetes
     digest: 70a6940749b4eb58c3855ba11721546a7e26db0fe3a393d8e6138da2e97e26b7
     home: https://kubeshark.co
@@ -334,7 +334,7 @@ entries:
   loki-stack:
   - apiVersion: v1
     appVersion: v2.6.1
-    created: "2024-03-05T15:06:26.028832451+07:00"
+    created: "2024-03-19T13:00:50.548136442+07:00"
     dependencies:
     - condition: loki.enabled
       name: loki
@@ -391,7 +391,7 @@ entries:
           description: "Changed the default addon resizer nanny resource configuration to match the documented Metrics Server autoscaling values."
     apiVersion: v2
     appVersion: 0.6.4
-    created: "2024-03-05T15:06:26.02967945+07:00"
+    created: "2024-03-19T13:00:50.548904552+07:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: e7cba5a2d7e2b0949b3ea1aa48fc3780b71eba17e1edccc8273f5da67048164b
@@ -418,7 +418,7 @@ entries:
   prometheus-blackbox-exporter:
   - apiVersion: v2
     appVersion: 0.23.0
-    created: "2024-03-05T15:06:26.03053728+07:00"
+    created: "2024-03-19T13:00:50.550170527+07:00"
     description: Prometheus Blackbox Exporter
     digest: f936e3ab0f1f0019f57f790394e04fb6660000866413ea169b203877371068f5
     home: https://github.com/prometheus/blackbox_exporter
@@ -448,7 +448,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 6.2.4
-    created: "2024-03-05T15:06:26.034097053+07:00"
+    created: "2024-03-19T13:00:50.555362947+07:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -482,7 +482,7 @@ entries:
       category: DeveloperTools
     apiVersion: v2
     appVersion: v0.21.0
-    created: "2024-03-05T15:06:26.035166986+07:00"
+    created: "2024-03-19T13:00:50.556430306+07:00"
     description: Helm chart for the sealed-secrets controller.
     digest: d90b385dadb4944044e10d0b2165b05c9e3ca83af525ca2759ae1c6f0b43d860
     home: https://github.com/bitnami-labs/sealed-secrets
@@ -502,7 +502,24 @@ entries:
   uniDeploy:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:26.042222936+07:00"
+    created: "2024-03-19T13:00:50.561429605+07:00"
+    description: Universal template
+    digest: 6d0944f0ea5f69efb3f90ecfcbaccc7911e64ccdef3f8bfd3dc1e18b94eb7cb2
+    maintainers:
+    - email: maksim.bunegin@perfectart.com
+      name: Maksim Bunegin
+    - email: sergey.mishukov@perfectart.com
+      name: Serg Mishukov
+    - email: alexey.kovtunovich@perfectart.com
+      name: Alexey Kovtunovich
+    name: uniDeploy
+    type: application
+    urls:
+    - uniDeploy-0.2.4.tgz
+    version: 0.2.4
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-03-19T13:00:50.560872226+07:00"
     description: Universal template
     digest: c74c80a25d9da4c090871fd16d95ebc8ff2f1c7ba97be35dcdf41337b7a601f4
     maintainers:
@@ -519,7 +536,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:26.041087098+07:00"
+    created: "2024-03-19T13:00:50.560382816+07:00"
     description: Universal template
     digest: f834bde2ffebba0970ea2c53d0eecffe374848549f2aa7346828824a5ae691fe
     maintainers:
@@ -536,7 +553,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:26.039382785+07:00"
+    created: "2024-03-19T13:00:50.559920097+07:00"
     description: Universal template
     digest: e541720d3b58200d73e7284c7881bbb4e73a449c45105031cfa3788e72790a95
     maintainers:
@@ -553,7 +570,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:26.038762466+07:00"
+    created: "2024-03-19T13:00:50.559446196+07:00"
     description: Universal template
     digest: 8dd772143a0c98836e1947c0591c34a01298647a8b12b6284ee2e84d367f5b7c
     maintainers:
@@ -570,7 +587,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:26.038117231+07:00"
+    created: "2024-03-19T13:00:50.558960593+07:00"
     description: Universal template
     digest: 4c3d2c3193536535d46f3cb7c2ac12b4e2356130b8b56e5f8b8a1b280cae39b9
     maintainers:
@@ -587,7 +604,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:26.037497143+07:00"
+    created: "2024-03-19T13:00:50.558503685+07:00"
     description: Universal template
     digest: 72e1028ea344123eaf7c7c42989152e08d70738b266ce91e9a6e5a14e30a54e6
     maintainers:
@@ -604,7 +621,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:26.036942048+07:00"
+    created: "2024-03-19T13:00:50.55803773+07:00"
     description: Universal template
     digest: 28758a6a68a539148305411cefb81144272f6071019e0b589dc69e67e80432c8
     maintainers:
@@ -621,7 +638,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:26.036379058+07:00"
+    created: "2024-03-19T13:00:50.557492223+07:00"
     description: Universal template
     digest: 89841fd0b2e5d46be6c1a2777a19e1dee2d6b836fe32659fbfcbebac41d34058
     maintainers:
@@ -636,7 +653,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-03-05T15:06:26.035747979+07:00"
+    created: "2024-03-19T13:00:50.556933582+07:00"
     description: Universal template
     digest: 93902d8b464ebcc077e91c024c17ae4e915e7c8d670b9892c2653cd12c3f68cd
     maintainers:
@@ -657,7 +674,7 @@ entries:
       kubeVersion: '>=1.22'
     apiVersion: v2
     appVersion: 0.13.0
-    created: "2024-03-05T15:06:26.044496605+07:00"
+    created: "2024-03-19T13:00:50.56420322+07:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami/
@@ -677,4 +694,4 @@ entries:
     urls:
     - vertical-pod-autoscaler-7.0.1.tgz
     version: 7.0.1
-generated: "2024-03-05T15:06:25.940691299+07:00"
+generated: "2024-03-19T13:00:50.46477635+07:00"
