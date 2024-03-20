@@ -19,6 +19,7 @@
 | kubeshark | 40.5 | https://github.com/kubeshark/kubeshark/tree/master/helm-chart |
 | k8s-event-logger | 1.1.4 | https://github.com/max-rocket-internet/k8s-event-logger |
 | metrics-server | 3.11.0 | https://artifacthub.io/packages/helm/metrics-server/metrics-server |
+| rabbitmq | 13.0.0 | https://charts.bitnami.com/bitnami |
 
 ## How to use
 
