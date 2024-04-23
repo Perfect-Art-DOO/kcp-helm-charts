@@ -43,6 +43,10 @@ helm repo index .
 5. add changes to README.md and push
 
 ## uniDeploy CHANGELOG
+
+### [0.2.5]
+restartPolicy is Never by default
+
 ### [0.2.4]
 Rollme feature disabled
 
