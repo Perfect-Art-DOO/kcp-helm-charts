@@ -44,8 +44,11 @@ helm repo index .
 
 ## uniDeploy CHANGELOG
 
-### [0.2.5]
+### [0.2.6]
 backoffLimit added
+
+### [0.2.5]
+Added restartPolicy
 
 ### [0.2.4]
 Rollme feature disabled
