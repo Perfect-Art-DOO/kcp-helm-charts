@@ -44,6 +44,9 @@ helm repo index .
 
 ## uniDeploy CHANGELOG
 
+### [0.2.5]
+Add emptyDirs
+
 ### [0.2.4]
 Rollme feature disabled
 
