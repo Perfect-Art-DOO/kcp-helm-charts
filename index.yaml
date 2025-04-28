@@ -3,7 +3,7 @@ entries:
   PushProx:
   - apiVersion: v1
     appVersion: 0.1.0
-    created: "2025-03-26T16:58:06.695949424Z"
+    created: "2025-04-28T11:12:53.657633386Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: d694cf18c8065e4af9aa8331130595b7e35ad1e29be389f3b823d60fc2486907
@@ -15,7 +15,7 @@ entries:
   actions-runner-controller:
   - apiVersion: v2
     appVersion: 0.27.5
-    created: "2025-03-26T16:58:06.73507514Z"
+    created: "2025-04-28T11:12:53.686567389Z"
     description: A Kubernetes controller that operates self-hosted runners for GitHub
       Actions on your Kubernetes cluster.
     digest: 914463630daa916a780f5413e39860b6898d39ea3a0e94adf4414fa6ddec6e1d
@@ -38,7 +38,7 @@ entries:
         url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
     apiVersion: v1
     appVersion: v1.10.1
-    created: "2025-03-26T16:58:06.739286668Z"
+    created: "2025-04-28T11:12:53.70008505Z"
     description: A Helm chart for cert-manager
     digest: 0ee2a692079b64f5306731d3bf76e1bde906e83dc5a60994494e0cd8f36cc04f
     home: https://github.com/cert-manager/cert-manager
@@ -61,7 +61,7 @@ entries:
     version: v1.10.1
   cnpgcluster:
   - apiVersion: v2
-    created: "2025-03-26T16:58:06.741172323Z"
+    created: "2025-04-28T11:12:53.712587096Z"
     description: Deploys and manages a CloudNativePG cluster and its associated resources.
     digest: 870cd8b7d73404ad5de3c9bf33661f4a9702c01de1ecb88546306f85c483138e
     home: https://cloudnative-pg.io
@@ -83,7 +83,7 @@ entries:
   goldilocks:
   - apiVersion: v2
     appVersion: v4.6.3
-    created: "2025-03-26T16:58:06.745361693Z"
+    created: "2025-04-28T11:12:53.741736117Z"
     dependencies:
     - condition: vpa.enabled
       name: vpa
@@ -119,7 +119,7 @@ entries:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
     appVersion: 1.6.4
-    created: "2025-03-26T16:58:06.750888575Z"
+    created: "2025-04-28T11:12:53.75486945Z"
     description: Ingress controller for Kubernetes using NGINX as a reverse proxy
       and load balancer
     digest: fbc41b027e0690256af52447baf0715e1d7072eb28f71e4a7f46a3257daee667
@@ -148,7 +148,7 @@ entries:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.751623813Z"
+    created: "2025-04-28T11:12:53.759377994Z"
     description: Ephemeral storage metrics for prometheus operator.
     digest: 3e0b9f6a7bd6702a226e691cfe9fcbf87b2307ce4383f54b19a9b36c17810006
     home: https://github.com/jmcgrath207/k8s-ephemeral-storage-metrics
@@ -165,7 +165,7 @@ entries:
   k8s-event-logger:
   - apiVersion: v1
     appVersion: "2.0"
-    created: "2025-03-26T16:58:06.752814412Z"
+    created: "2025-04-28T11:12:53.76455581Z"
     description: 'This chart runs a pod that simply watches Kubernetes Events and
       logs them to stdout in JSON to be collected and stored by your logging solution,
       e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or
@@ -206,7 +206,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v0.69.1
-    created: "2025-03-26T16:58:06.830437335Z"
+    created: "2025-04-28T11:12:53.980519323Z"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -273,7 +273,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: 0.61.1
-    created: "2025-03-26T16:58:06.775992465Z"
+    created: "2025-04-28T11:12:53.844036382Z"
     dependencies:
     - condition: kubeStateMetrics.enabled
       name: kube-state-metrics
@@ -325,7 +325,7 @@ entries:
   kubeshark:
   - apiVersion: v2
     appVersion: "40.5"
-    created: "2025-03-26T16:58:06.83201464Z"
+    created: "2025-04-28T11:12:53.985206732Z"
     description: The API Traffic Analyzer for Kubernetes
     digest: 70a6940749b4eb58c3855ba11721546a7e26db0fe3a393d8e6138da2e97e26b7
     home: https://kubeshark.co
@@ -355,7 +355,7 @@ entries:
   loki-stack:
   - apiVersion: v1
     appVersion: v2.6.1
-    created: "2025-03-26T16:58:06.858805636Z"
+    created: "2025-04-28T11:12:54.027880445Z"
     dependencies:
     - condition: loki.enabled
       name: loki
@@ -412,7 +412,7 @@ entries:
           description: "Changed the default addon resizer nanny resource configuration to match the documented Metrics Server autoscaling values."
     apiVersion: v2
     appVersion: 0.6.4
-    created: "2025-03-26T16:58:06.860986644Z"
+    created: "2025-04-28T11:12:54.032205576Z"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: e7cba5a2d7e2b0949b3ea1aa48fc3780b71eba17e1edccc8273f5da67048164b
@@ -439,7 +439,7 @@ entries:
   prometheus-blackbox-exporter:
   - apiVersion: v2
     appVersion: 0.23.0
-    created: "2025-03-26T16:58:06.862650689Z"
+    created: "2025-04-28T11:12:54.03716891Z"
     description: Prometheus Blackbox Exporter
     digest: f936e3ab0f1f0019f57f790394e04fb6660000866413ea169b203877371068f5
     home: https://github.com/prometheus/blackbox_exporter
@@ -469,13 +469,49 @@ entries:
       category: Infrastructure
       images: |
         - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r39
+        - name: rabbitmq
+          image: docker.io/bitnami/rabbitmq:4.0.7-debian-12-r0
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 4.0.7
+    created: "2025-04-28T11:12:54.080747992Z"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: RabbitMQ is an open source general-purpose message broker that is
+      designed for consistent, highly-available messaging scenarios (both synchronous
+      and asynchronous).
+    digest: ee5a8a2354ff9522ae8397bba73c6aeaf7ad964afb5a5f2b066b7d7017c89a42
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/rabbitmq/img/rabbitmq-stack-220x234.png
+    keywords:
+    - rabbitmq
+    - message queue
+    - AMQP
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: rabbitmq
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq
+    urls:
+    - rabbitmq-15.3.3.tgz
+    version: 15.3.3
+  - annotations:
+      category: Infrastructure
+      images: |
+        - name: os-shell
           image: docker.io/bitnami/os-shell:12-debian-12-r16
         - name: rabbitmq
           image: docker.io/bitnami/rabbitmq:3.12.13-debian-12-r2
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 3.12.13
-    created: "2025-03-26T16:58:06.867232604Z"
+    created: "2025-04-28T11:12:54.056471526Z"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -506,7 +542,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 6.2.4
-    created: "2025-03-26T16:58:06.873302866Z"
+    created: "2025-04-28T11:12:54.101477149Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -540,7 +576,7 @@ entries:
       category: DeveloperTools
     apiVersion: v2
     appVersion: v0.21.0
-    created: "2025-03-26T16:58:06.878812858Z"
+    created: "2025-04-28T11:12:54.106776527Z"
     description: Helm chart for the sealed-secrets controller.
     digest: d90b385dadb4944044e10d0b2165b05c9e3ca83af525ca2759ae1c6f0b43d860
     home: https://github.com/bitnami-labs/sealed-secrets
@@ -560,7 +596,7 @@ entries:
   uniDeploy:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.897445415Z"
+    created: "2025-04-28T11:12:54.152584445Z"
     description: Universal template
     digest: e6b740f46ad38957177336f8450c68de113dd0c6712e0ebf3a993ba4de4d2f19
     maintainers:
@@ -579,7 +615,7 @@ entries:
     version: 0.2.5
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.895842729Z"
+    created: "2025-04-28T11:12:54.149339633Z"
     description: Universal template
     digest: 6d0944f0ea5f69efb3f90ecfcbaccc7911e64ccdef3f8bfd3dc1e18b94eb7cb2
     maintainers:
@@ -596,7 +632,7 @@ entries:
     version: 0.2.4
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.894283025Z"
+    created: "2025-04-28T11:12:54.147155439Z"
     description: Universal template
     digest: c74c80a25d9da4c090871fd16d95ebc8ff2f1c7ba97be35dcdf41337b7a601f4
     maintainers:
@@ -613,7 +649,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.892762312Z"
+    created: "2025-04-28T11:12:54.144006677Z"
     description: Universal template
     digest: f834bde2ffebba0970ea2c53d0eecffe374848549f2aa7346828824a5ae691fe
     maintainers:
@@ -630,7 +666,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.890820253Z"
+    created: "2025-04-28T11:12:54.133427386Z"
     description: Universal template
     digest: e541720d3b58200d73e7284c7881bbb4e73a449c45105031cfa3788e72790a95
     maintainers:
@@ -647,7 +683,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.885401152Z"
+    created: "2025-04-28T11:12:54.121788973Z"
     description: Universal template
     digest: 8dd772143a0c98836e1947c0591c34a01298647a8b12b6284ee2e84d367f5b7c
     maintainers:
@@ -664,7 +700,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.884202585Z"
+    created: "2025-04-28T11:12:54.119191372Z"
     description: Universal template
     digest: 4c3d2c3193536535d46f3cb7c2ac12b4e2356130b8b56e5f8b8a1b280cae39b9
     maintainers:
@@ -681,7 +717,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.883113149Z"
+    created: "2025-04-28T11:12:54.116777271Z"
     description: Universal template
     digest: 72e1028ea344123eaf7c7c42989152e08d70738b266ce91e9a6e5a14e30a54e6
     maintainers:
@@ -698,7 +734,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.882062659Z"
+    created: "2025-04-28T11:12:54.114224248Z"
     description: Universal template
     digest: 28758a6a68a539148305411cefb81144272f6071019e0b589dc69e67e80432c8
     maintainers:
@@ -715,7 +751,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.881002985Z"
+    created: "2025-04-28T11:12:54.112043615Z"
     description: Universal template
     digest: 89841fd0b2e5d46be6c1a2777a19e1dee2d6b836fe32659fbfcbebac41d34058
     maintainers:
@@ -730,7 +766,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-03-26T16:58:06.879979902Z"
+    created: "2025-04-28T11:12:54.109293728Z"
     description: Universal template
     digest: 93902d8b464ebcc077e91c024c17ae4e915e7c8d670b9892c2653cd12c3f68cd
     maintainers:
@@ -751,7 +787,7 @@ entries:
       kubeVersion: '>=1.22'
     apiVersion: v2
     appVersion: 0.13.0
-    created: "2025-03-26T16:58:06.903852119Z"
+    created: "2025-04-28T11:12:54.158701322Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami/
@@ -771,4 +807,4 @@ entries:
     urls:
     - vertical-pod-autoscaler-7.0.1.tgz
     version: 7.0.1
-generated: "2025-03-26T16:58:06.694232632Z"
+generated: "2025-04-28T11:12:53.653169082Z"
