@@ -21,6 +21,7 @@
 | metrics-server | 3.11.0 | https://artifacthub.io/packages/helm/metrics-server/metrics-server |
 | rabbitmq | 15.3.3 | https://charts.bitnami.com/bitnami |
 | cnpgcluster | 0.2.1001 | https://cloudnative-pg.github.io/charts |
+| zally | 0.3.1 | https://cloudnative-pg.github.io/charts |
 
 ## How to use
 
