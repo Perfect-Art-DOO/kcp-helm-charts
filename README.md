@@ -27,7 +27,7 @@
 
 - Add github page
 ```bash
-helm repo add movos-ag_charts https://movos-ag.github.io/helm-charts
+helm repo add perfect-art-doo_charts https://perfect-art-doo.github.io/helm-charts
 ```
 ## How to add chart
 1. download chart and unpack chart to repository
