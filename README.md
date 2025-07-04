@@ -4,7 +4,7 @@
 
 | chart | helm version | original repo |
 |---|---|---|
-| uniDeploy | 0.2.5 ||
+| uniDeploy | 0.2.6 ||
 | cert-manager | v1.10.1 | https://charts.jetstack.io |
 | ingress-nginx | 4.5.2 | https://kubernetes.github.io/ingress-nginx |
 | k8s-ephemeral-storage-metrics | 1.0.0 | https://github.com/jmcgrath207/k8s-ephemeral-storage-metrics |
@@ -45,6 +45,9 @@ helm repo index .
 5. add changes to README.md and push
 
 ## uniDeploy CHANGELOG
+
+### [0.2.6]
+Add hostPaths
 
 ### [0.2.5]
 Add emptyDirs
