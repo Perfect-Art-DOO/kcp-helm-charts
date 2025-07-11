@@ -47,7 +47,7 @@ helm repo index .
 ## uniDeploy CHANGELOG
 
 ### [0.2.7]
-Add podDisruptionBudget and verticalAutoscaling
+Add verticalAutoscaling
 
 ### [0.2.6]
 Add hostPaths
