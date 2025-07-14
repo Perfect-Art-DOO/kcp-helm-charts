@@ -1,0 +1,7 @@
+apiVersion: v2
+name: zally
+description: A Helm chart for zally
+type: application
+version: 0.3.1
+appVersion: "2.1.1"
+dependencies:

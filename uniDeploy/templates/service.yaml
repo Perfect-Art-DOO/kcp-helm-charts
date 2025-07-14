@@ -1,0 +1,48 @@
+{{- $appName := include "app.fullname" . -}}
+{{- $appNamespace := .Release.Namespace }}
+{{- $appLabels := include "app.labels" . }}
+{{- $appSelectorLabels := include "app.selectorLabels" . }}
+{{- range .Values.service }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+{{- if .fullName }}
+  name: "{{ .fullName }}"
+{{- else }}
+  name: "{{ $appName }}-{{ .name }}"
+{{- end }}
+  namespace: {{ $appNamespace | quote }}
+  labels:
+    {{- $appLabels | nindent 4 }}
+spec:
+  {{- if ne (default .type "ClusterIP") "ExternalName" }}
+  selector:
+    {{- $appSelectorLabels | nindent 4 }}
+  {{- end }}
+{{- if .type }}
+  type: {{ .type }}
+{{- else }}
+  type: ClusterIP
+{{- end }}
+{{- if .sessionAffinity }}
+  sessionAffinity: {{ .sessionAffinity }}
+{{- else }}
+  sessionAffinity: None
+{{- end }}
+  ports:
+{{- range .ports }}
+    - port: {{ .port }}
+{{- if .containerPort }}
+      targetPort: {{ .containerPort }}
+{{- else }}
+      targetPort: {{ .port }}
+{{- end }}
+{{- if .protocol }}
+      protocol: {{ .protocol }}
+{{- else }}
+      protocol: TCP
+{{- end }}
+      name: {{ .name | quote }}
+{{- end }}
+{{- end }}

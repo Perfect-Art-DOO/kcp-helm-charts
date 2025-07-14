@@ -1,0 +1,299 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+hostAliases:
+  - ip: "127.0.0.1"
+    hostnames:
+    - "foo.local"
+    - "bar.local"
+
+appName: app
+
+checkConnectionBeforeStart:
+  - host: postgres.postgres.svc.cluster.local
+    port: 5432
+
+containers:
+  - name: example
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+    image:
+      pullPolicy: Always
+      repository: ""
+      tag: "latest"
+    env:
+      - EXAMPLE1: "value1"
+    # load env from metadata fields
+    envFromFields:
+      - name: EXAMPLE1
+        field: metadata.namespace
+    # load env variables from secret
+    envFromSecrets:
+      - secretName: example2
+        variable: line1
+      - fullSecretName: some-prefix-example3
+        VARIABLE: value
+    configmap:
+      # mount all files from configmap to one directory
+      - mountDir: /example1
+      # mount one file from configmap
+      - mountDir: /example2
+        file: example.conf
+    # mount secret as files to directory
+    secrets:
+      - secretName: example1
+        mountDir: /example3
+      - secretFullName: project-example1
+        mountDir: /example6
+    # mount volumes to directory
+    volumes:
+      - volumeName: example1
+        mountDir: /example4
+    # mount PVC to directory
+    persistentVolumeClaims:
+      - volumeName: example1
+        mountDir: /example5
+    # expose ports to pod network
+    ports:
+      - name: http
+        containerPort: 80
+    # probe to check is pod alive
+    livenessProbe:
+      initialDelaySeconds: 0
+      periodSeconds: 10
+      timeoutSeconds: 1
+      successThreshold: 1
+      failureThreshold: 3
+      ## chose one of three
+      ## 1. http probe
+      httpGet:
+        path: /
+        port: http
+        # httpHeaders:
+        # - name: Custom-Header
+        #   value: Awesome
+      ## 2. exit code probe
+      # exec:
+      #   command:
+      #   - cat
+      #   - /tmp/healthy
+      ## 3. tcp connection
+      # tcpSocket:
+      #   port: 8080
+    # probe to check network connection
+    readinessProbe:
+      # could be used all options from livenessProbe
+      httpGet:
+        path: /
+        port: http
+    # securityContext: {}
+    #   capabilities:
+    #     drop:
+    #     - ALL
+    #   readOnlyRootFilesystem: true
+    #   runAsNonRoot: true
+    #   runAsUser: 1000
+    # resources: {}
+    #   limits:
+    #     cpu: 100m
+    #     memory: 128Mi
+    #   requests:
+    #     cpu: 100m
+    #     memory: 128Mi
+
+
+imagePullSecrets:
+  - name: "github-imagepullsecret"
+    # will be created if set base64Secret
+    base64Secret: ""
+
+# volumes
+volumes:
+  - name: example1
+    emptyDir: {}
+
+persistentVolumeClaim:
+  - name: example1
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      volumeMode: Filesystem
+      resources:
+        requests:
+          storage: 8Gi
+      storageClassName: slow
+      selector:
+        matchLabels:
+          release: "stable"
+        matchExpressions:
+          - {key: environment, operator: In, values: [dev]}
+
+secrets:
+  - name: "example1"
+    # values should be base64 encoded
+    data: |-
+      line1: dmFsdWUx
+      line2: dmFsdWUy
+  - fullName: "example2"
+    # secret won't be created (just mapped) if "data" not set
+
+sealedSecrets:
+  - name: "example1"
+    # values should be sealed
+    data: |-
+      line1: dmFsdWUx
+      line2: dmFsdWUy
+  - fullName: "example2"
+    # secret won't be created (just mapped) if "data" not set
+
+configmap:
+  create: true
+  fromFiles:
+    - files/example.conf
+  fromVariables:
+    - example2.txt: |-
+        line1
+        line2
+
+# tlsSecrets:
+#   - name: "example1"
+#     base64Certificate: ""
+#     base64PrivateKey: ""
+#   - name: "example2"
+#     letsencrypt:
+#       domains:
+#         - "example2.com"
+#       # issuer: ""
+
+service:
+  - name: "main"
+    # type: ClusterIP
+    ports:
+      - name: http
+        port: 80
+        # containerPort: 80
+        # protocol: TCP
+      # - name: https
+      #   port: 443
+      #   containerPort: 443
+  - fullName: "example10-main"
+    ports:
+      - name: http
+        port: 80
+
+serviceMonitor:
+  - name: "main"
+    path: /metrics
+    targetPort: 8080
+#    port: http
+    interval: 60s
+    scrapeTimeout: 30s
+    metricRelabelings:
+      - targetLabel: "application"
+        replacement: "api"
+    relabelings:
+      - targetLabel: "application"
+        replacement: "api"
+
+ingress:
+  - name: "example-local"
+    # className: ""
+    # annotations: {}
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: "/"
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hosts:
+      - host: example.local
+        paths:
+          - path: /path1
+            pathType: Prefix
+            serviceName: main
+            servicePort: 80
+          # - path: /path2
+          #   pathType: Prefix
+          #   serviceFullName: example10-main
+          #   servicePort: 80
+    # tls:
+    #  - secretName: example1
+    #    hosts:
+    #      - example.local
+
+useIstio: true # disables Ingress and uses Istio (Virtual Service, Service Entry)
+
+virtualServices:
+  - name: virtualservice-one
+    gateways:
+      - gateway-one
+    hosts:
+      - "host-one.example.com"
+    http:
+      - match:
+          - uri:
+              prefix: /service1
+        route:
+          - destination:
+              host: service1
+              port:
+                number: 8080
+    tls:
+      - match:
+          - port: 443
+            sniHosts:
+              - "host-one.example.com"
+        route:
+          - destination:
+              host: service1
+              port:
+                number: 8443
+
+serviceEntries:
+  - name: external-service-one
+    hosts:
+      - "external-service-one.com"
+    ports:
+      - number: 80
+        name: http
+        protocol: HTTP
+    location: MESH_EXTERNAL
+    resolution: DNS
+    endpoints:
+      - address: "1.2.3.4"
+
+autoscaling:
+  create: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+automountServiceAccountToken: false
+
+nameOverride: ""
+fullnameOverride: ""
+labels:
+  somelabel: "somevalue"
+podAnnotations: {}
+securityContext: {}
+  # fsGroup: 2000
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+
+podDisruptionBudget:
+  maxUnavailable: 0
+
+verticalAutoscaling:
+  create: false
+  controlledValues: "RequestsAndLimits"
+  minMemory: "50Mi"
+  maxMemory: "5000Mi"
+  updateMode: "Auto"

@@ -1,0 +1,11 @@
+{{- if .Values.server.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "zally.server.fullname" . }}-config
+data:
+  rules-config.conf: |
+{{- if .Values.server.rules }}
+{{ .Values.server.rules | indent 4 }}
+{{ end }}
+{{ end }}

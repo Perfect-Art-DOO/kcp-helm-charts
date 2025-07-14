@@ -1,0 +1,30 @@
+{{- if .Values.useIstio }}
+{{- $appName := include "app.fullname" . -}}
+{{- $appNamespace := .Release.Namespace }}
+{{- $appLabels := include "app.labels" . }}
+{{- range .Values.virtualServices }}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: "{{ $appName }}-{{ .name }}"
+  namespace: {{ $appNamespace | quote }}
+  labels:
+    {{- $appLabels | nindent 4 }}
+  {{- with .annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .gateways }}
+  gateways: {{ toYaml .gateways | nindent 4 }}
+  {{- end }}
+  hosts: {{ toYaml .hosts | nindent 4 }}
+  {{- if .http }}
+  http: {{ toYaml .http | nindent 4 }}
+  {{- end }}
+  {{- if .tls }}
+  tls: {{ toYaml .tls | nindent 4 }}
+  {{- end }}
+{{- end }}
+{{- end }}

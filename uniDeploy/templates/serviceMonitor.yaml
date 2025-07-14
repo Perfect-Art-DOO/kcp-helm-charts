@@ -1,0 +1,47 @@
+{{- $appName := include "app.fullname" . -}}
+{{- $appNamespace := .Release.Namespace }}
+{{- $appLabels := include "app.labels" . }}
+{{- range .Values.serviceMonitor }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: "{{ $appName }}-{{ .name }}"
+  namespace: {{ $appNamespace | quote }}
+  labels:
+    {{- $appLabels | nindent 4 }}
+spec:
+  namespaceSelector:
+    matchNames:
+    - {{ $appNamespace | quote }}
+  endpoints:
+{{- if .path }}
+  - path: {{ .path }}
+{{- else }}
+  - path: /metrics
+{{- end }}
+{{- if .targetPort }}
+    targetPort: {{ .targetPort }}
+{{- else if .port }}
+    port: {{ .port }}
+{{- else }}
+    port: "http"
+{{- end }}
+{{- if .interval }}
+    interval: {{ .interval }}
+{{- end }}
+{{- if .scrapeTimeout }}
+    scrapeTimeout: {{ .scrapeTimeout }}
+{{- end }}
+{{- if .metricRelabelings }}
+    metricRelabelings:
+{{  toYaml .metricRelabelings | indent 6 }}
+{{- end }}
+{{- if .relabelings }}
+    relabelings:
+{{ toYaml .relabelings | indent 6 }}
+{{- end }}
+  selector:
+    matchLabels:
+      {{- $appLabels | nindent 6 }}
+{{- end }}

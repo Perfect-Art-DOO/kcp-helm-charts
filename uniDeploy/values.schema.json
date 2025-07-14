@@ -1,0 +1,522 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "affinity": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "affinity",
+      "type": "object"
+    },
+    "appName": {
+      "default": "",
+      "required": [],
+      "title": "appName",
+      "type": "string"
+    },
+    "autoscaling": {
+      "additionalProperties": false,
+      "properties": {
+        "create": {
+          "default": false,
+          "required": [],
+          "title": "create",
+          "type": "boolean"
+        },
+        "maxReplicas": {
+          "default": 10,
+          "required": [],
+          "title": "maxReplicas",
+          "type": "integer"
+        },
+        "minReplicas": {
+          "default": 1,
+          "required": [],
+          "title": "minReplicas",
+          "type": "integer"
+        },
+        "targetCPUUtilizationPercentage": {
+          "default": 80,
+          "required": [],
+          "title": "targetCPUUtilizationPercentage",
+          "type": "integer"
+        },
+        "targetMemoryUtilizationPercentage": {
+          "default": 80,
+          "required": [],
+          "title": "targetMemoryUtilizationPercentage",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "create",
+        "minReplicas",
+        "maxReplicas",
+        "targetCPUUtilizationPercentage",
+        "targetMemoryUtilizationPercentage"
+      ],
+      "title": "autoscaling",
+      "type": "object"
+    },
+    "checkConnectionBeforeStart": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "checkConnectionBeforeStart",
+      "type": "array"
+    },
+    "configmap": {
+      "additionalProperties": false,
+      "properties": {
+        "create": {
+          "default": false,
+          "required": [],
+          "title": "create",
+          "type": "boolean"
+        },
+        "fromFiles": {
+          "items": {
+            "required": []
+          },
+          "required": [],
+          "title": "fromFiles",
+          "type": "array"
+        },
+        "fromVariables": {
+          "items": {
+            "required": []
+          },
+          "required": [],
+          "title": "fromVariables",
+          "type": "array"
+        }
+      },
+      "required": [
+        "create",
+        "fromFiles",
+        "fromVariables"
+      ],
+      "title": "configmap",
+      "type": "object"
+    },
+    "containers": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "containers",
+      "type": "array"
+    },
+    "emptyDirs": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "emptyDirs",
+      "type": "array"
+    },
+    "fullnameOverride": {
+      "default": "",
+      "required": [],
+      "title": "fullnameOverride",
+      "type": "string"
+    },
+    "global": {
+      "description": "Global values are values that can be accessed from any chart or subchart by exactly the same name.",
+      "required": [],
+      "title": "global",
+      "type": "object"
+    },
+    "hostAliases": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "hostAliases",
+      "type": "array"
+    },
+    "hostPaths": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "hostPaths",
+      "type": "array"
+    },
+    "imagePullSecrets": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "imagePullSecrets",
+      "type": "array"
+    },
+    "ingress": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "ingress",
+      "type": "array"
+    },
+    "initContainers": {
+      "additionalProperties": false,
+      "properties": {
+        "image": {
+          "default": "ghcr.io/perfect-art-doo/busybox:1.28",
+          "required": [],
+          "title": "image",
+          "type": "string"
+        },
+        "resources": {
+          "additionalProperties": false,
+          "properties": {
+            "limits": {
+              "additionalProperties": false,
+              "properties": {
+                "cpu": {
+                  "default": "10m",
+                  "required": [],
+                  "title": "cpu",
+                  "type": "string"
+                },
+                "memory": {
+                  "default": "20Mi",
+                  "required": [],
+                  "title": "memory",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cpu",
+                "memory"
+              ],
+              "title": "limits",
+              "type": "object"
+            },
+            "requests": {
+              "additionalProperties": false,
+              "properties": {
+                "cpu": {
+                  "default": "10m",
+                  "required": [],
+                  "title": "cpu",
+                  "type": "string"
+                },
+                "memory": {
+                  "default": "20Mi",
+                  "required": [],
+                  "title": "memory",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cpu",
+                "memory"
+              ],
+              "title": "requests",
+              "type": "object"
+            }
+          },
+          "required": [
+            "requests",
+            "limits"
+          ],
+          "title": "resources",
+          "type": "object"
+        },
+        "securityContext": {
+          "additionalProperties": false,
+          "properties": {
+            "allowPrivilegeEscalation": {
+              "default": false,
+              "required": [],
+              "title": "allowPrivilegeEscalation",
+              "type": "boolean"
+            },
+            "capabilities": {
+              "additionalProperties": false,
+              "properties": {
+                "drop": {
+                  "items": {
+                    "anyOf": [
+                      {
+                        "required": [],
+                        "type": "string"
+                      }
+                    ],
+                    "required": []
+                  },
+                  "required": [],
+                  "title": "drop",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "drop"
+              ],
+              "title": "capabilities",
+              "type": "object"
+            },
+            "privileged": {
+              "default": false,
+              "required": [],
+              "title": "privileged",
+              "type": "boolean"
+            },
+            "readOnlyRootFilesystem": {
+              "default": true,
+              "required": [],
+              "title": "readOnlyRootFilesystem",
+              "type": "boolean"
+            },
+            "seccompProfile": {
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "default": "RuntimeDefault",
+                  "required": [],
+                  "title": "type",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "title": "seccompProfile",
+              "type": "object"
+            }
+          },
+          "required": [
+            "capabilities",
+            "privileged",
+            "allowPrivilegeEscalation",
+            "readOnlyRootFilesystem",
+            "seccompProfile"
+          ],
+          "title": "securityContext",
+          "type": "object"
+        }
+      },
+      "required": [
+        "image",
+        "resources",
+        "securityContext"
+      ],
+      "title": "initContainers",
+      "type": "object"
+    },
+    "labels": {
+      "additionalProperties": false,
+      "properties": {
+        "app.kubernetes.io/project": {
+          "default": "",
+          "required": [],
+          "title": "app.kubernetes.io/project",
+          "type": "string"
+        },
+        "app.kubernetes.io/version": {
+          "default": "",
+          "required": [],
+          "title": "app.kubernetes.io/version",
+          "type": "string"
+        },
+        "deploy-date": {
+          "default": "",
+          "required": [],
+          "title": "deploy-date",
+          "type": "string"
+        },
+        "version": {
+          "default": "",
+          "required": [],
+          "title": "version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "app.kubernetes.io/project",
+        "app.kubernetes.io/version",
+        "version",
+        "deploy-date"
+      ],
+      "title": "labels",
+      "type": "object"
+    },
+    "nameOverride": {
+      "default": "",
+      "required": [],
+      "title": "nameOverride",
+      "type": "string"
+    },
+    "nodeSelector": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "nodeSelector",
+      "type": "object"
+    },
+    "podAnnotations": {
+      "additionalProperties": false,
+      "properties": {
+        "sidecar.istio.io/proxyCPU": {
+          "default": "",
+          "required": [],
+          "title": "sidecar.istio.io/proxyCPU",
+          "type": "string"
+        },
+        "sidecar.istio.io/proxyMemory": {
+          "default": "",
+          "required": [],
+          "title": "sidecar.istio.io/proxyMemory",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sidecar.istio.io/proxyCPU",
+        "sidecar.istio.io/proxyMemory"
+      ],
+      "title": "podAnnotations",
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "required": [],
+      "title": "replicaCount",
+      "type": "integer"
+    },
+    "sealedSecrets": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "sealedSecrets",
+      "type": "object"
+    },
+    "secrets": {
+      "additionalProperties": false,
+      "description": "imagePullSecrets:\n  - name: \"github-imagepullsecret\"\n    base64Secret: \"\"",
+      "required": [],
+      "title": "secrets",
+      "type": "object"
+    },
+    "securityContext": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "securityContext",
+      "type": "object"
+    },
+    "service": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "service",
+      "type": "array"
+    },
+    "serviceAccount": {
+      "additionalProperties": false,
+      "properties": {
+        "annotations": {
+          "additionalProperties": false,
+          "required": [],
+          "title": "annotations",
+          "type": "object"
+        },
+        "create": {
+          "default": false,
+          "required": [],
+          "title": "create",
+          "type": "boolean"
+        },
+        "name": {
+          "default": "",
+          "required": [],
+          "title": "name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "create",
+        "annotations",
+        "name"
+      ],
+      "title": "serviceAccount",
+      "type": "object"
+    },
+    "serviceEntries": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "serviceEntries",
+      "type": "array"
+    },
+    "serviceMonitor": {
+      "additionalProperties": false,
+      "required": [],
+      "title": "serviceMonitor",
+      "type": "object"
+    },
+    "tlsSecrets": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "tlsSecrets",
+      "type": "array"
+    },
+    "tolerations": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "tolerations",
+      "type": "array"
+    },
+    "useIstio": {
+      "default": false,
+      "required": [],
+      "title": "useIstio",
+      "type": "boolean"
+    },
+    "virtualServices": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "virtualServices",
+      "type": "array"
+    }
+  },
+  "required": [
+    "appName",
+    "nameOverride",
+    "fullnameOverride",
+    "labels",
+    "podAnnotations",
+    "containers",
+    "imagePullSecrets",
+    "service",
+    "replicaCount",
+    "hostAliases",
+    "checkConnectionBeforeStart",
+    "secrets",
+    "sealedSecrets",
+    "configmap",
+    "tlsSecrets",
+    "serviceMonitor",
+    "ingress",
+    "autoscaling",
+    "serviceAccount",
+    "securityContext",
+    "nodeSelector",
+    "tolerations",
+    "affinity",
+    "useIstio",
+    "initContainers",
+    "serviceEntries",
+    "virtualServices",
+    "emptyDirs",
+    "hostPaths"
+  ],
+  "type": "object"
+}

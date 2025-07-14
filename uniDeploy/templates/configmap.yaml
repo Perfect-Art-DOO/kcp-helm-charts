@@ -1,0 +1,17 @@
+{{- $globalFiles := .Files }}
+{{- if .Values.configmap.create }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "app.fullname" . | quote }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "app.labels" . | nindent 4 }}
+data:
+{{- range .Values.configmap.fromFiles }}
+{{ ($globalFiles.Glob . ).AsConfig | indent 2 }}
+{{- end }}
+{{- range .Values.configmap.fromVariables }}
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end }}

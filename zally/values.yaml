@@ -1,0 +1,193 @@
+imagePullSecrets:
+- name: "container-registry-imagepullsecret"
+
+server:
+  name: server
+  enabled: true
+  replicaCount: 1
+
+  # Override zally default rules. Maps are additive. Arrays are not additive. See https://github.com/lightbend/config for syntax.
+  rules:
+  # Override zally's default ignored rules
+  ignoreRules:
+
+  image:
+    repository: ghcr.io/perfect-art-doo/movos-zally-server
+    tag: v2.1.1
+    pullPolicy: Always
+  ## Database configuration
+  ## @param jdbc.url database url
+  ## @param jdbc.username Non-root username for database access
+  ## @param jdbc.password Password for the non-root username for database access
+  ## @param jdbc.existingSecret Name of an existing secret resource containing the database credentials
+  ## @param jdbc.existingSecretPasswordKey Name of an existing secret key containing the database credentials
+  ##
+  jdbc:
+    url: jdbc:hsqldb:mem:storage;sql.syntax_pgs=true
+    password:
+    username:
+    existingSecret:
+    existingSecretPasswordKey:
+
+  nameOverride: ""
+  fullnameOverride: ""
+
+  podSecurityContext: {}
+    # fsGroup: 2000
+
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
+
+  resources: {}
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+  extraEnv: {}
+
+  livenessProbe:
+    enabled: false
+
+  readinessProbe:
+    enabled: false
+
+  ingress:
+    enabled: false
+
+    # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+    # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+    # ingressClassName: nginx
+
+    annotations: {}
+    #   kubernetes.io/ingress.class: nginx
+    #   kubernetes.io/tls-acme: 'true'
+
+    extraLabels: {}
+
+    hosts: []
+      # - host: chart-example.local
+      #   paths:
+      #     - path: /
+      #       pathType: ImplementationSpecific
+
+  service:
+    annotations: {}
+    labels: {}
+    clusterIP: ""
+
+    ## List of IP addresses at which the Zally server service is available
+    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
+    ##
+    externalIPs: []
+
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    servicePort: 8000
+    nodePort: ""
+    type: ClusterIP
+
+
+web:
+  name: web
+  enabled: true
+  replicaCount: 1
+
+  apiUrl:
+
+  image:
+    repository: ghcr.io/perfect-art-doo/movos-zally-web-ui
+    tag: v2.1.1
+    pullPolicy: Always
+
+  nameOverride: ""
+  fullnameOverride: ""
+
+  podSecurityContext: {}
+    # fsGroup: 2000
+
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
+
+  resources: {}
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+  extraEnv: {}
+
+  livenessProbe:
+    enabled: false
+
+  readinessProbe:
+    enabled: false
+
+  ingress:
+    enabled: false
+
+    # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+    # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+    # ingressClassName: nginx
+
+    annotations: {}
+    #   kubernetes.io/ingress.class: nginx
+    #   kubernetes.io/tls-acme: 'true'
+
+    extraLabels: {}
+
+    hosts: []
+      # - host: chart-example.local
+      #   paths:
+      #     - path: /
+      #       pathType: ImplementationSpecific
+
+  service:
+    annotations: {}
+    labels: {}
+    clusterIP: ""
+
+    ## List of IP addresses at which the Zally server service is available
+    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
+    ##
+    externalIPs: []
+
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    servicePort: 3000
+    nodePort: ""
+    type: ClusterIP

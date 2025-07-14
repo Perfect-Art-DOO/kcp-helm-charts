@@ -1,0 +1,27 @@
+{{- if .Values.useIstio }}
+{{- $appName := include "app.fullname" . -}}
+{{- $appNamespace := .Release.Namespace }}
+{{- $appLabels := include "app.labels" . }}
+{{- range .Values.serviceEntries }}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: "{{ $appName }}-{{ .name }}"
+  namespace: {{ $appNamespace | quote }}
+  labels:
+    {{- $appLabels | nindent 4 }}
+  {{- with .annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  hosts: {{ toYaml .hosts | nindent 4 }}
+  ports: {{ toYaml .ports | nindent 4 }}
+  location: {{ .location }}
+  resolution: {{ .resolution }}
+  {{- if .endpoints }}
+  endpoints: {{ toYaml .endpoints | nindent 4 }}
+  {{- end }}
+{{- end }}
+{{- end }}

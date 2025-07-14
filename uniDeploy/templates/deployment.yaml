@@ -1,0 +1,250 @@
+{{- if .Values.containers -}}
+{{- $globalFiles := .Files }}
+{{ $appName := include "app.fullname" . }}
+{{ $checkConnectionBeforeStart := .Values.checkConnectionBeforeStart }}
+{{- $appVersion := .Chart.AppVersion }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $appName | quote }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "app.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "app.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- if or .Values.configmap.create .Values.podAnnotations }}
+      annotations:
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      # {{- if .Values.configmap.create }}
+      #   rollme: {{ randAlphaNum 5 | quote }}
+      # {{- end }}
+      {{- end }}
+      labels:
+        {{- include "app.labels" . | nindent 8 }}
+    spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+      {{- range .Values.imagePullSecrets }}
+        - name: {{ .name }}
+      {{- end }}
+      {{- end }}
+      {{- if .Values.imagePullSealedSecrets }}
+      imagePullSecrets:
+      {{- range .Values.imagePullSealedSecrets }}
+      {{- if .fullName }}
+        - name: "{{ .fullName }}"
+      {{- else }}
+        - name: "{{ $appName }}-{{ .name }}"
+      {{- end }}
+      {{- end }}
+      {{- end }}
+      serviceAccountName: {{ include "app.serviceAccountName" . }}
+      {{- if eq .Values.automountServiceAccountToken false}}
+      automountServiceAccountToken: false
+      {{- end }}
+      restartPolicy: Always
+      securityContext:
+        {{- toYaml .Values.securityContext | nindent 8 }}
+      {{- if $checkConnectionBeforeStart }}
+      initContainers:
+        {{- range $checkConnectionBeforeStart }}
+        - name: check-{{ .host | replace "." "-" | trunc 51 }}-{{ .port }}
+          image: {{ $.Values.initContainers.image }}
+          command: ['sh', '-c', 'for i in $(seq 1 12); do echo "$i/12: Checking connection to {{ .host }}:{{ .port }}..."; nc -z -w 2 {{ .host }} {{ .port }} && exit 0; sleep 8; done; exit 1']
+          securityContext:
+          {{- if $.Values.initContainers.securityContext }}
+            {{- toYaml $.Values.initContainers.securityContext | nindent 12 }}
+          {{- else }}
+            {}
+          {{- end }}
+          resources:
+          {{- if $.Values.initContainers.resources }}
+            {{- toYaml $.Values.initContainers.resources | nindent 12 }}
+          {{- else }}
+            {}
+          {{- end }}
+        {{- end }}
+      {{- end }}
+      {{- if .Values.hostAliases }}
+      hostAliases:
+        {{- toYaml .Values.hostAliases | nindent 8 }}
+      {{- end }}
+      containers:
+      {{- range .Values.containers }}
+        - name: {{ .name }}
+          {{- if .command }}
+          command: {{ toYaml .command | nindent 12 }}
+          {{- end }}
+          {{- if .args }}
+          args: {{ toYaml .args | nindent 12 }}
+          {{- end }}
+          {{- if or .env .envFromSecrets .envFromFields }}
+          env:
+          {{- range .env }}
+          {{- range $name, $value := . }}
+            - name: {{ $name | quote }}
+              value: {{ $value | quote }}
+          {{- end }}
+          {{- end }}
+          {{- range .envFromSecrets }}
+            - name: {{ .variable | quote }}
+              valueFrom:
+                secretKeyRef:
+                  {{- if .fullSecretName }}
+                  name: "{{ .fullSecretName }}"
+                  {{- else }}
+                  name: "{{ $appName }}-{{ .secretName }}"
+                  {{- end }}
+                  key: {{ .variable | quote }}
+          {{- end }}
+          {{- range .envFromFields }}
+            - name: {{ .name | quote }}
+              valueFrom:
+                fieldRef:
+                  fieldPath: {{ .field }}
+          {{- end }}
+          {{- end }}
+          securityContext:
+          {{- if .securityContext }}
+            {{- toYaml .securityContext | nindent 12 }}
+          {{- else }}
+            {}
+          {{- end }}
+          image: "{{ .image.repository }}:{{ .image.tag | default $appVersion }}"
+          imagePullPolicy: {{ .image.pullPolicy | default "IfNotPresent" }}
+          {{- if .ports }}
+          ports:
+            {{- range .ports }}
+            - name: {{ .name | quote }}
+              containerPort: {{ .containerPort }}
+              {{- if .protocol }}
+              protocol: {{ .protocol }}
+              {{- else }}
+              protocol: TCP
+              {{- end }}
+            {{- end }}
+          {{- end }}
+          {{- with .livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .startupProbe }}
+          startupProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          resources:
+          {{- if .resources }}
+            {{- toYaml .resources | nindent 12 }}
+          {{- else }}
+            {}
+          {{- end }}
+          {{- if or .configmap .secrets .volumes .persistentVolumeClaims .emptyDirs .hostPaths}}
+          volumeMounts:
+          {{- range .configmap }}
+          - name: configmap
+            {{- if .file }}
+            mountPath: "{{ .mountDir }}/{{ .file }}"
+            subPath: {{ .file | quote }}
+            {{- else }}
+            mountPath: {{ .mountDir | quote }}
+            {{- end }}
+          {{- end }}
+          {{- range .secrets }}
+          {{- if .secretFullName }}
+          - name: "{{ .secretFullName }}-secret"
+          {{- else }}
+          - name: "{{ .secretName }}-secret"
+          {{- end }}
+            mountPath: {{ .mountDir | quote }}
+            readOnly: true
+          {{- end }}
+          {{- range .volumes }}
+          - name: "{{ .volumeName }}"
+            mountPath: {{ .mountDir | quote }}
+          {{- end }}
+          {{- range .persistentVolumeClaims }}
+          - name: "{{ .volumeName }}-pvc"
+            mountPath: {{ .mountDir | quote }}
+          {{- end }}
+          {{- range .emptyDirs }}
+          - name: "{{ .name }}"
+            mountPath: "{{ .mountDir }}"
+          {{- end }}
+          {{- range .hostPaths }}
+          - name: "{{ .name }}"
+            mountPath: "{{ .mountDir }}"
+          {{- end }}
+          {{- end }}
+        {{- end }}
+      {{- if or .Values.configmap.create .Values.secrets .Values.volumes .Values.persistentVolumeClaim .Values.emptyDirs .Values.hostPaths}}
+      volumes:
+      {{- if .Values.configmap.create }}
+        - name: "configmap"
+          configMap:
+            name: {{ $appName | quote }}
+      {{- end }}
+      {{- range .Values.secrets }}
+      {{- if .fullName }}
+        - name: "{{ .fullName }}-secret"
+          secret:
+            secretName: "{{ .fullName }}"
+      {{- else }}
+        - name: "{{ .name }}-secret"
+          secret:
+            secretName: "{{ $appName }}-{{ .name }}"
+      {{- end }}
+      {{- end }}
+      {{- if .Values.volumes }}
+      {{- toYaml .Values.volumes | nindent 8 }}
+      {{- end }}
+      {{- range .Values.persistentVolumeClaim }}
+        - name: "{{ .name }}-pvc"
+          persistentVolumeClaim:
+            claimName: "{{ $appName }}-{{ .name }}"
+      {{- end }}
+      {{- range .Values.emptyDirs }}
+        - name: "{{ .name }}"
+          emptyDir: {}
+          {{- if .sizeLimit }}
+          sizeLimit: "{{ .sizeLimit }}"
+          {{- else }}
+          sizeLimit: "1Gi"
+          {{- end }}
+      {{- end }}
+      {{- range .Values.hostPaths }}
+        - name: "{{ .name }}"
+          hostPath:
+            path: {{ .path }}
+            {{- if .type }}
+            type: "{{ .type }}"
+            {{- else }}
+            type: "DirectoryOrCreate"
+            {{- end }}
+      {{- end }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

@@ -1,0 +1,26 @@
+{{- $appName := include "app.fullname" . -}}
+{{- if and (hasKey .Values "verticalAutoscaling") (hasKey .Values.verticalAutoscaling "create") (eq .Values.verticalAutoscaling.create true) }}
+apiVersion: "autoscaling.k8s.io/v1"
+kind: VerticalPodAutoscaler
+metadata:
+  name: {{ include "app.name" . | quote }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "app.labels" . | nindent 4 }}
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: "{{ $appName }}"
+  resourcePolicy:
+    containerPolicies:
+      - containerName: '*'
+        controlledValues: {{ default "RequestsAndLimits" .Values.verticalAutoscaling.controlledValues }}
+        minAllowed:
+          memory:  {{ default "50Mi" .Values.verticalAutoscaling.minMemory }}
+        maxAllowed:
+          memory:   {{ default "5000Mi" .Values.verticalAutoscaling.maxMemory }}
+        controlledResources: ["memory"]
+  updatePolicy:
+    updateMode: {{ default "Auto" .Values.verticalAutoscaling.updateMode }}
+{{- end }}

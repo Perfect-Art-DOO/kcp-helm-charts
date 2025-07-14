@@ -1,0 +1,95 @@
+# Default values for app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+appName: ""
+nameOverride: ""
+fullnameOverride: ""
+
+labels:
+  app.kubernetes.io/project: ""
+  app.kubernetes.io/version: ""
+  version: ""
+  deploy-date: ""
+podAnnotations:
+  sidecar.istio.io/proxyCPU: ""
+  sidecar.istio.io/proxyMemory: ""
+
+containers: []
+imagePullSecrets: []
+service: []
+
+
+replicaCount: 1
+hostAliases: []
+
+checkConnectionBeforeStart: []
+# containers:
+#   - name: example
+#     image:
+#       repository: ""
+#       tag: ""
+
+# imagePullSecrets:
+#   - name: "github-imagepullsecret"
+#     base64Secret: ""
+
+secrets: {}
+sealedSecrets: {}
+
+configmap:
+  create: false
+  fromFiles: []
+  fromVariables: []
+
+tlsSecrets: []
+
+serviceMonitor: {}
+
+ingress: []
+
+autoscaling:
+  create: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+
+
+securityContext: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+useIstio: false
+
+initContainers:
+  image: ghcr.io/perfect-art-doo/busybox:1.28
+  resources:
+    requests:
+      cpu: 10m
+      memory: 20Mi
+    limits:
+      cpu: 10m
+      memory: 20Mi
+  securityContext:
+    capabilities:
+      drop:
+        - all
+    privileged: false
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    seccompProfile:
+      type: RuntimeDefault
+
+serviceEntries: []
+virtualServices: []
+
+emptyDirs: []
+hostPaths: []

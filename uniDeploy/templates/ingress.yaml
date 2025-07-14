@@ -1,0 +1,75 @@
+{{- $appName := include "app.fullname" . -}}
+{{- $appNamespace := .Release.Namespace }}
+{{- $appLabels := include "app.labels" . }}
+{{- $capabilities := .Capabilities }}
+{{- range .Values.ingress }}
+---
+{{- if and .className (not (semverCompare ">=1.18-0" $capabilities.KubeVersion.GitVersion)) }}
+  {{- if not (hasKey .annotations "kubernetes.io/ingress.class") }}
+  {{- $_ := set .annotations "kubernetes.io/ingress.class" .className}}
+  {{- end }}
+{{- end }}
+{{- if semverCompare ">=1.19-0" $capabilities.KubeVersion.GitVersion -}}
+apiVersion: networking.k8s.io/v1
+{{- else if semverCompare ">=1.14-0" $capabilities.KubeVersion.GitVersion -}}
+apiVersion: networking.k8s.io/v1beta1
+{{- else -}}
+apiVersion: extensions/v1beta1
+{{- end }}
+kind: Ingress
+metadata:
+  name: "{{ $appName }}-{{ .name }}"
+  namespace: {{ $appNamespace | quote }}
+  labels:
+    {{- $appLabels | nindent 4 }}
+  {{- with .annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if and .className (semverCompare ">=1.18-0" $capabilities.KubeVersion.GitVersion) }}
+  ingressClassName: {{ .className | quote }}
+  {{- end }}
+  {{- if .tls }}
+  tls:
+    {{- range .tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      {{- if .secretName }}
+      secretName: "{{ $appName }}-tls-{{ .secretName }}"
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  rules:
+    {{- range .hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          {{- range .paths }}
+          - path: {{ .path | quote }}
+            {{- if and .pathType (semverCompare ">=1.18-0" $capabilities.KubeVersion.GitVersion) }}
+            pathType: {{ .pathType | quote }}
+            {{- end }}
+            backend:
+              {{- if semverCompare ">=1.19-0" $capabilities.KubeVersion.GitVersion }}
+              service:
+                {{- if .serviceFullName }}
+                name: "{{ .serviceFullName }}"
+                {{- else }}
+                name: "{{ $appName }}-{{ .serviceName }}"
+                {{- end }}
+                port:
+                  number: {{ default "80" .servicePort }}
+              {{- else }}
+              {{- if .serviceFullName }}
+              serviceName: "{{ .serviceFullName }}"
+              {{- else }}
+              serviceName: "{{ $appName }}-{{ .serviceName }}"
+              {{- end }}
+              servicePort: {{ default "80" .servicePort }}
+              {{- end }}
+          {{- end }}
+    {{- end }}
+{{- end }}
