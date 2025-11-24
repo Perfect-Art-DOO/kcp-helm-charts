@@ -113,6 +113,11 @@ spec:
                   fieldPath: {{ .field }}
           {{- end }}
           {{- end }}
+          {{- if .Values.secretFrom }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.secretFrom.name }}
+          {{- end }}
           securityContext:
           {{- if .securityContext }}
             {{- toYaml .securityContext | nindent 12 }}

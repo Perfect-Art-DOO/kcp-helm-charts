@@ -46,6 +46,9 @@ helm repo index .
 
 ## uniDeploy CHANGELOG
 
+### [0.2.8]
+Add secretFrom
+
 ### [0.2.7]
 Add verticalAutoscaling
 
