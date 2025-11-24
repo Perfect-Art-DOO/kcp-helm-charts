@@ -113,10 +113,10 @@ spec:
                   fieldPath: {{ .field }}
           {{- end }}
           {{- end }}
-          {{- if .Values.secretFrom }}
+          {{- with .Values.secretFrom }}
           envFrom:
             - secretRef:
-                name: {{ .Values.secretFrom.name }}
+                name: {{ .name }}
           {{- end }}
           securityContext:
           {{- if .securityContext }}
