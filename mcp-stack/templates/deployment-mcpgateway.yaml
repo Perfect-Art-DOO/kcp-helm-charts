@@ -52,11 +52,11 @@ spec:
           env:
             # ---------- POSTGRES ----------
             - name: POSTGRES_HOST
-              value: {{ printf "%s-postgres" (include "mcp-stack.fullname" .) }}
+              value: {{ .Values.externalpostgres.host | default (printf "%s-postgres" (include "mcp-stack.fullname" .)) }}
             - name: POSTGRES_PORT
-              value: "{{ .Values.mcpContextForge.env.postgres.port }}"
+              value: "{{ .Values.externalpostgres.port | default (.Values.mcpContextForge.env.postgres.port) }}"
             - name: POSTGRES_DB
-              value: "{{ .Values.mcpContextForge.env.postgres.db }}"
+              value: "{{  .Values.externalpostgres.db | default (.Values.mcpContextForge.env.postgres.db) }}"
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
