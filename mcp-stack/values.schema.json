@@ -876,7 +876,7 @@
       "type": "object",
       "properties": {
         "host": { "type": "string" },
-        "port": { "type": "string" },
+        "port": { "type": "integer" },
         "db": { "type": "string" }
       }
     },
