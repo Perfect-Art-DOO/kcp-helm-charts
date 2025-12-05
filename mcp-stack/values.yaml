@@ -296,7 +296,7 @@ mcpContextForge:
     WELL_KNOWN_CACHE_MAX_AGE: "3600" # cache control for well-known files (seconds)
 
     # ─ Plugin Configuration ─
-    PLUGINS_ENABLED: "false"         # enable the plugin framework
+    PLUGINS_ENABLED: "true"         # enable the plugin framework
     PLUGIN_CONFIG_FILE: "plugins/config.yaml" # path to main plugin configuration file
     PLUGINS_MTLS_CA_BUNDLE: ""               # default CA bundle for external plugins (optional)
     PLUGINS_MTLS_CLIENT_CERT: ""             # gateway client certificate for plugin mTLS
