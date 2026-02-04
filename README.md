@@ -22,6 +22,7 @@
 | rabbitmq | 15.3.3 | https://charts.bitnami.com/bitnami |
 | cnpgcluster | 0.2.1001 | https://cloudnative-pg.github.io/charts |
 | zally | 0.3.1 | https://cloudnative-pg.github.io/charts |
+| oauth-proxy-httproute-keycloak | 0.1.0 |  |
 
 ## How to use
 
