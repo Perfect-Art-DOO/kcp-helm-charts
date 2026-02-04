@@ -1,0 +1,56 @@
+{% comment %} apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    acme.cert-manager.io/http01-edit-in-place: "true"
+    # oauth2proxy has own 403 page
+    nginx.ingress.kubernetes.io/custom-http-errors: "503"
+  {{- if .Values.additionalIngressAnnotations }}
+{{ toYaml .Values.additionalIngressAnnotations | indent 4 }}
+  {{- end }}
+
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - {{ .Values.ingressHost }}
+      secretName: {{ .Release.Name }}-ingress-tls
+  rules:
+  - host: {{ .Values.ingressHost }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Release.Name }}
+            port:
+              name: http
+      {{ if .Values.additionalPaths }}
+{{ toYaml .Values.additionalPaths | indent 6 }}
+      {{ end }} {% endcomment %}
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: {{ .Release.Name }}-httproute
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: {{ .Values.gateway.name }}
+    namespace: {{ .Values.gateway.namespace }}
+  hostnames: ["{{ .Values.ingressHost }}"]
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - group: ''
+      weight: 1
+      kind: Service
+      name: {{ .Release.Name }}
+      port: 80
