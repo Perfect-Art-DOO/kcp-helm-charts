@@ -18,6 +18,13 @@ podAnnotations:
 containers: []
 imagePullSecrets: []
 service: []
+# service:
+#   - fullName: "app"
+#     labels:
+#       istio.io/use-waypoint: waypoint
+#     ports:
+#       - name: http
+#         port: 80
 
 
 replicaCount: 1

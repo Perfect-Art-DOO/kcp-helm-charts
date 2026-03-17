@@ -15,6 +15,9 @@ metadata:
   namespace: {{ $appNamespace | quote }}
   labels:
     {{- $appLabels | nindent 4 }}
+    {{- with .labels }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   {{- if ne (default .type "ClusterIP") "ExternalName" }}
   selector:

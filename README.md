@@ -4,7 +4,7 @@
 
 | chart | helm version | original repo |
 |---|---|---|
-| uniDeploy | 0.2.7 | https://perfect-art-doo.github.io/helm-charts |
+| uniDeploy | 0.2.9 | https://perfect-art-doo.github.io/helm-charts |
 | cert-manager | v1.10.1 | https://charts.jetstack.io |
 | ingress-nginx | 4.5.2 | https://kubernetes.github.io/ingress-nginx |
 | k8s-ephemeral-storage-metrics | 1.0.0 | https://github.com/jmcgrath207/k8s-ephemeral-storage-metrics |
@@ -46,6 +46,9 @@ helm repo index .
 5. add changes to README.md and push
 
 ## uniDeploy CHANGELOG
+
+### [0.2.9]
+Add custom service labels
 
 ### [0.2.8]
 Add secretFrom
