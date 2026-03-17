@@ -45,9 +45,9 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 image:
-  repository: cr-cache.companion.dev.perfectart.ai/bitnami
+  repository: quay.io/oauth2-proxy
   name: oauth2-proxy
-  tag: 7.1.2-debian-10-r3
+  tag: v7.1.2
   pullPolicy: Always
   pullSecrets:
     - regcred
