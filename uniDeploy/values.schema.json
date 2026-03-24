@@ -420,6 +420,42 @@
     },
     "securityContext": {
       "additionalProperties": false,
+      "properties": {
+        "fsGroup": {
+          "required": [],
+          "title": "fsGroup",
+          "type": "integer"
+        },
+        "fsGroupChangePolicy": {
+          "required": [],
+          "title": "fsGroupChangePolicy",
+          "type": "string"
+        },
+        "runAsGroup": {
+          "required": [],
+          "title": "runAsGroup",
+          "type": "integer"
+        },
+        "runAsNonRoot": {
+          "required": [],
+          "title": "runAsNonRoot",
+          "type": "boolean"
+        },
+        "runAsUser": {
+          "required": [],
+          "title": "runAsUser",
+          "type": "integer"
+        },
+        "supplementalGroups": {
+          "items": {
+            "required": [],
+            "type": "integer"
+          },
+          "required": [],
+          "title": "supplementalGroups",
+          "type": "array"
+        }
+      },
       "required": [],
       "title": "securityContext",
       "type": "object"
