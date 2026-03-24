@@ -58,7 +58,7 @@ spec:
       restartPolicy: Always
       securityContext:
         {{- toYaml .Values.securityContext | nindent 8 }}
-      {{- if $checkConnectionBeforeStart }}
+      {{- if or $checkConnectionBeforeStart .Values.extraInitContainers }}
       initContainers:
         {{- range $checkConnectionBeforeStart }}
         - name: check-{{ .host | replace "." "-" | trunc 51 }}-{{ .port }}
@@ -76,6 +76,9 @@ spec:
           {{- else }}
             {}
           {{- end }}
+        {{- end }}
+        {{- with .Values.extraInitContainers }}
+          {{- toYaml . | nindent 8 }}
         {{- end }}
       {{- end }}
       {{- if .Values.hostAliases }}

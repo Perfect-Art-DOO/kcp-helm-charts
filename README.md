@@ -47,6 +47,12 @@ helm repo index .
 
 ## uniDeploy CHANGELOG
 
+### [0.2.13]
+Fix
+
+### [0.2.12]
+Fix
+
 ### [0.2.11]
 Add deploy receate strategy
 
