@@ -47,6 +47,9 @@ helm repo index .
 
 ## uniDeploy CHANGELOG
 
+### [0.2.11]
+Add deploy receate strategy
+
 ### [0.2.10]
 Fix size of volumes
 

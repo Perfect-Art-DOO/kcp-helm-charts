@@ -58,6 +58,26 @@
       "title": "autoscaling",
       "type": "object"
     },
+    "deploymentStrategy": {
+      "additionalProperties": false,
+      "properties": {
+        "rollingUpdate": {
+          "additionalProperties": false,
+          "required": [],
+          "title": "rollingUpdate",
+          "type": "object"
+        },
+        "type": {
+          "default": "RollingUpdate",
+          "required": [],
+          "title": "type",
+          "type": "string"
+        }
+      },
+      "required": [],
+      "title": "deploymentStrategy",
+      "type": "object"
+    },
     "checkConnectionBeforeStart": {
       "items": {
         "required": []
@@ -522,6 +542,7 @@
     "serviceMonitor",
     "ingress",
     "autoscaling",
+    "deploymentStrategy",
     "serviceAccount",
     "securityContext",
     "nodeSelector",
