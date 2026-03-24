@@ -478,6 +478,22 @@
       "title": "useIstio",
       "type": "boolean"
     },
+    "volumes": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "volumes",
+      "type": "array"
+    },
+    "persistentVolumeClaim": {
+      "items": {
+        "required": []
+      },
+      "required": [],
+      "title": "persistentVolumeClaim",
+      "type": "array"
+    },
     "virtualServices": {
       "items": {
         "required": []
@@ -514,6 +530,8 @@
     "useIstio",
     "initContainers",
     "serviceEntries",
+    "volumes",
+    "persistentVolumeClaim",
     "virtualServices",
     "emptyDirs",
     "hostPaths"

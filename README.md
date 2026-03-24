@@ -48,7 +48,7 @@ helm repo index .
 ## uniDeploy CHANGELOG
 
 ### [0.2.9]
-Add custom service labels
+Add custom service labels, volumes
 
 ### [0.2.8]
 Add secretFrom

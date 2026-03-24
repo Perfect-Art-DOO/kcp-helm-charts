@@ -98,5 +98,7 @@ initContainers:
 serviceEntries: []
 virtualServices: []
 
+volumes: []
+persistentVolumeClaim: []
 emptyDirs: []
 hostPaths: []
