@@ -47,6 +47,9 @@ helm repo index .
 
 ## uniDeploy CHANGELOG
 
+### [0.2.10]
+Fix size of volumes
+
 ### [0.2.9]
 Add custom service labels, volumes
 
