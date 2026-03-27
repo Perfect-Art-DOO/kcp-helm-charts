@@ -1,0 +1,13 @@
+---
+schedule: "0 */10 * * *"
+
+aws_secret_name: aws-creds
+# secret must have keys:
+# AWS_REGION
+# AWS_ACCOUNT
+# AWS_SECRET_ACCESS_KEY
+# AWS_ACCESS_KEY_ID
+
+pull_secret_name: regcred # name of generated secret
+
+image: odaniait/aws-kubectl:latest
