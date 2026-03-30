@@ -3,7 +3,7 @@ entries:
   PushProx:
   - apiVersion: v1
     appVersion: 0.1.0
-    created: "2026-03-24T17:28:53.595867456Z"
+    created: "2026-03-30T12:21:43.930819845Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: d694cf18c8065e4af9aa8331130595b7e35ad1e29be389f3b823d60fc2486907
@@ -15,7 +15,7 @@ entries:
   actions-runner-controller:
   - apiVersion: v2
     appVersion: 0.27.5
-    created: "2026-03-24T17:28:53.628440718Z"
+    created: "2026-03-30T12:21:43.959698181Z"
     description: A Kubernetes controller that operates self-hosted runners for GitHub
       Actions on your Kubernetes cluster.
     digest: 914463630daa916a780f5413e39860b6898d39ea3a0e94adf4414fa6ddec6e1d
@@ -30,6 +30,17 @@ entries:
     urls:
     - actions-runner-controller-0.23.5.tgz
     version: 0.23.5
+  aws-ecr-helper:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2026-03-30T12:21:43.960136601Z"
+    description: A Helm chart for Kubernetes
+    digest: 2df324845b44a3956805a3f038f5f6432b50df66ac5adbc42fca7b5bd971a2f8
+    name: aws-ecr-helper
+    type: application
+    urls:
+    - aws-ecr-helper-0.1.0.tgz
+    version: 0.1.0
   cert-manager:
   - annotations:
       artifacthub.io/prerelease: "false"
@@ -38,7 +49,7 @@ entries:
         url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
     apiVersion: v1
     appVersion: v1.10.1
-    created: "2026-03-24T17:28:53.634648416Z"
+    created: "2026-03-30T12:21:43.979430072Z"
     description: A Helm chart for cert-manager
     digest: 0ee2a692079b64f5306731d3bf76e1bde906e83dc5a60994494e0cd8f36cc04f
     home: https://github.com/cert-manager/cert-manager
@@ -61,7 +72,7 @@ entries:
     version: v1.10.1
   cnpgcluster:
   - apiVersion: v2
-    created: "2026-03-24T17:28:53.64092085Z"
+    created: "2026-03-30T12:21:43.986051037Z"
     description: Deploys and manages a CloudNativePG cluster and its associated resources.
     digest: 870cd8b7d73404ad5de3c9bf33661f4a9702c01de1ecb88546306f85c483138e
     home: https://cloudnative-pg.io
@@ -83,7 +94,7 @@ entries:
   goldilocks:
   - apiVersion: v2
     appVersion: v4.6.3
-    created: "2026-03-24T17:28:53.659987036Z"
+    created: "2026-03-30T12:21:43.994922757Z"
     dependencies:
     - condition: vpa.enabled
       name: vpa
@@ -119,7 +130,7 @@ entries:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
     appVersion: 1.6.4
-    created: "2026-03-24T17:28:53.665385791Z"
+    created: "2026-03-30T12:21:44.002424821Z"
     description: Ingress controller for Kubernetes using NGINX as a reverse proxy
       and load balancer
     digest: fbc41b027e0690256af52447baf0715e1d7072eb28f71e4a7f46a3257daee667
@@ -148,7 +159,7 @@ entries:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.665835461Z"
+    created: "2026-03-30T12:21:44.004895199Z"
     description: Ephemeral storage metrics for prometheus operator.
     digest: 3e0b9f6a7bd6702a226e691cfe9fcbf87b2307ce4383f54b19a9b36c17810006
     home: https://github.com/jmcgrath207/k8s-ephemeral-storage-metrics
@@ -165,7 +176,7 @@ entries:
   k8s-event-logger:
   - apiVersion: v1
     appVersion: "2.0"
-    created: "2026-03-24T17:28:53.667218886Z"
+    created: "2026-03-30T12:21:44.009602728Z"
     description: 'This chart runs a pod that simply watches Kubernetes Events and
       logs them to stdout in JSON to be collected and stored by your logging solution,
       e.g. [fluentd](https://github.com/helm/charts/tree/master/stable/fluentd) or
@@ -206,7 +217,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v0.69.1
-    created: "2026-03-24T17:28:53.835445558Z"
+    created: "2026-03-30T12:21:44.146542193Z"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -273,7 +284,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: 0.61.1
-    created: "2026-03-24T17:28:53.746385311Z"
+    created: "2026-03-30T12:21:44.070801417Z"
     dependencies:
     - condition: kubeStateMetrics.enabled
       name: kube-state-metrics
@@ -325,7 +336,7 @@ entries:
   kubeshark:
   - apiVersion: v2
     appVersion: "40.5"
-    created: "2026-03-24T17:28:53.838149262Z"
+    created: "2026-03-30T12:21:44.148729353Z"
     description: The API Traffic Analyzer for Kubernetes
     digest: 70a6940749b4eb58c3855ba11721546a7e26db0fe3a393d8e6138da2e97e26b7
     home: https://kubeshark.co
@@ -355,7 +366,7 @@ entries:
   loki-stack:
   - apiVersion: v1
     appVersion: v2.6.1
-    created: "2026-03-24T17:28:53.878124094Z"
+    created: "2026-03-30T12:21:44.17335843Z"
     dependencies:
     - condition: loki.enabled
       name: loki
@@ -412,7 +423,7 @@ entries:
           description: "Changed the default addon resizer nanny resource configuration to match the documented Metrics Server autoscaling values."
     apiVersion: v2
     appVersion: 0.6.4
-    created: "2026-03-24T17:28:53.887777766Z"
+    created: "2026-03-30T12:21:44.178918876Z"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: e7cba5a2d7e2b0949b3ea1aa48fc3780b71eba17e1edccc8273f5da67048164b
@@ -439,7 +450,7 @@ entries:
   oauth-proxy-httproute-keycloak:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.888393615Z"
+    created: "2026-03-30T12:21:44.180953029Z"
     description: A Helm chart for Kubernetes
     digest: d2c0ab3285f3890a4c9e7c1ebf73c1edd4cdeb338d699776689b742601b8beb6
     name: oauth-proxy-httproute-keycloak
@@ -450,7 +461,7 @@ entries:
   oauth-proxy-keycloak:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.888971887Z"
+    created: "2026-03-30T12:21:44.183329022Z"
     description: A Helm chart for Kubernetes
     digest: 4ed06173938a27fa8c8e1bda3f2fa70dee99d347d30c0dbb3cfa5421208bea45
     name: oauth-proxy-keycloak
@@ -461,7 +472,7 @@ entries:
   prometheus-blackbox-exporter:
   - apiVersion: v2
     appVersion: 0.23.0
-    created: "2026-03-24T17:28:53.890974288Z"
+    created: "2026-03-30T12:21:44.186652105Z"
     description: Prometheus Blackbox Exporter
     digest: f936e3ab0f1f0019f57f790394e04fb6660000866413ea169b203877371068f5
     home: https://github.com/prometheus/blackbox_exporter
@@ -497,7 +508,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 4.0.7
-    created: "2026-03-24T17:28:53.922153631Z"
+    created: "2026-03-30T12:21:44.213097335Z"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -533,7 +544,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 3.12.13
-    created: "2026-03-24T17:28:53.899609935Z"
+    created: "2026-03-30T12:21:44.196433304Z"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -564,7 +575,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 6.2.4
-    created: "2026-03-24T17:28:53.930771911Z"
+    created: "2026-03-30T12:21:44.226630709Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -598,7 +609,7 @@ entries:
       category: DeveloperTools
     apiVersion: v2
     appVersion: v0.21.0
-    created: "2026-03-24T17:28:53.933082958Z"
+    created: "2026-03-30T12:21:44.232992034Z"
     description: Helm chart for the sealed-secrets controller.
     digest: d90b385dadb4944044e10d0b2165b05c9e3ca83af525ca2759ae1c6f0b43d860
     home: https://github.com/bitnami-labs/sealed-secrets
@@ -618,7 +629,7 @@ entries:
   uniDeploy:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.958704179Z"
+    created: "2026-03-30T12:21:44.273178975Z"
     description: Universal template
     digest: ac0f620574c48295951efb6f8855ed97c8273424415070b09fe20d1585733f95
     maintainers:
@@ -637,7 +648,7 @@ entries:
     version: 0.2.13
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.957030117Z"
+    created: "2026-03-30T12:21:44.270571583Z"
     description: Universal template
     digest: 9dac6169a6b5f48df599ec5baf466b40fa0b9c4191975c74f7a3459dc2b1c7ec
     maintainers:
@@ -656,7 +667,7 @@ entries:
     version: 0.2.12
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.955490717Z"
+    created: "2026-03-30T12:21:44.265798914Z"
     description: Universal template
     digest: 7a831b18cd0086d7fbae75ea4db64748dda61461c270f39e54d6107788f26989
     maintainers:
@@ -675,7 +686,7 @@ entries:
     version: 0.2.11
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.954219443Z"
+    created: "2026-03-30T12:21:44.262041993Z"
     description: Universal template
     digest: 3db9b163983d3ae1a1ac079f78fbb002ab4160e39b9b79df721d7f47704cfc4a
     maintainers:
@@ -694,7 +705,7 @@ entries:
     version: 0.2.10
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.993894142Z"
+    created: "2026-03-30T12:21:44.306363677Z"
     description: Universal template
     digest: 37ca85364d7aecc337351e483a43f735e444962e8c6bb1db8c278552f5638c5c
     maintainers:
@@ -713,7 +724,7 @@ entries:
     version: 0.2.9
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.99252935Z"
+    created: "2026-03-30T12:21:44.303758714Z"
     description: Universal template
     digest: 392fb88d7c2ff88bbd4aac1dca995c1786c37af46fbab2587973b5864e8f636f
     maintainers:
@@ -732,7 +743,7 @@ entries:
     version: 0.2.8
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.989649845Z"
+    created: "2026-03-30T12:21:44.300953989Z"
     description: Universal template
     digest: e9d347162b5c039febcd676a9bcbf5676f20c75ba6da284a31ec8a07b59790b9
     maintainers:
@@ -751,7 +762,7 @@ entries:
     version: 0.2.7
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.985334816Z"
+    created: "2026-03-30T12:21:44.29813211Z"
     description: Universal template
     digest: 711cc8497b8719cb0e4df79db870c29b4cdf2d892476b98cecaf44d7a1f7ef9a
     maintainers:
@@ -770,7 +781,7 @@ entries:
     version: 0.2.6
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.981129028Z"
+    created: "2026-03-30T12:21:44.293395058Z"
     description: Universal template
     digest: e6b740f46ad38957177336f8450c68de113dd0c6712e0ebf3a993ba4de4d2f19
     maintainers:
@@ -789,7 +800,7 @@ entries:
     version: 0.2.5
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.978706384Z"
+    created: "2026-03-30T12:21:44.289469029Z"
     description: Universal template
     digest: 6d0944f0ea5f69efb3f90ecfcbaccc7911e64ccdef3f8bfd3dc1e18b94eb7cb2
     maintainers:
@@ -806,7 +817,7 @@ entries:
     version: 0.2.4
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.975090479Z"
+    created: "2026-03-30T12:21:44.280349752Z"
     description: Universal template
     digest: c74c80a25d9da4c090871fd16d95ebc8ff2f1c7ba97be35dcdf41337b7a601f4
     maintainers:
@@ -823,7 +834,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.959962493Z"
+    created: "2026-03-30T12:21:44.27765938Z"
     description: Universal template
     digest: f834bde2ffebba0970ea2c53d0eecffe374848549f2aa7346828824a5ae691fe
     maintainers:
@@ -840,7 +851,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.952623409Z"
+    created: "2026-03-30T12:21:44.256188922Z"
     description: Universal template
     digest: e541720d3b58200d73e7284c7881bbb4e73a449c45105031cfa3788e72790a95
     maintainers:
@@ -857,7 +868,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.951206955Z"
+    created: "2026-03-30T12:21:44.253860588Z"
     description: Universal template
     digest: 8dd772143a0c98836e1947c0591c34a01298647a8b12b6284ee2e84d367f5b7c
     maintainers:
@@ -874,7 +885,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.949894697Z"
+    created: "2026-03-30T12:21:44.251021853Z"
     description: Universal template
     digest: 4c3d2c3193536535d46f3cb7c2ac12b4e2356130b8b56e5f8b8a1b280cae39b9
     maintainers:
@@ -891,7 +902,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.948904305Z"
+    created: "2026-03-30T12:21:44.249004188Z"
     description: Universal template
     digest: 72e1028ea344123eaf7c7c42989152e08d70738b266ce91e9a6e5a14e30a54e6
     maintainers:
@@ -908,7 +919,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.947942928Z"
+    created: "2026-03-30T12:21:44.245612554Z"
     description: Universal template
     digest: 28758a6a68a539148305411cefb81144272f6071019e0b589dc69e67e80432c8
     maintainers:
@@ -925,7 +936,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.946534699Z"
+    created: "2026-03-30T12:21:44.240161991Z"
     description: Universal template
     digest: 89841fd0b2e5d46be6c1a2777a19e1dee2d6b836fe32659fbfcbebac41d34058
     maintainers:
@@ -940,7 +951,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-24T17:28:53.943881501Z"
+    created: "2026-03-30T12:21:44.235745276Z"
     description: Universal template
     digest: 93902d8b464ebcc077e91c024c17ae4e915e7c8d670b9892c2653cd12c3f68cd
     maintainers:
@@ -961,7 +972,7 @@ entries:
       kubeVersion: '>=1.22'
     apiVersion: v2
     appVersion: 0.13.0
-    created: "2026-03-24T17:28:53.999528638Z"
+    created: "2026-03-30T12:21:44.312669727Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami/
@@ -984,7 +995,7 @@ entries:
   zally:
   - apiVersion: v2
     appVersion: 2.1.1
-    created: "2026-03-24T17:28:54.000732423Z"
+    created: "2026-03-30T12:21:44.315161121Z"
     description: A Helm chart for zally
     digest: 0713b6bba62e86cb06be002d6def65de494f001be72ba617d130a86f82945e93
     name: zally
@@ -992,4 +1003,4 @@ entries:
     urls:
     - zally-0.3.1.tgz
     version: 0.3.1
-generated: "2026-03-24T17:28:53.594639271Z"
+generated: "2026-03-30T12:21:43.926040302Z"
