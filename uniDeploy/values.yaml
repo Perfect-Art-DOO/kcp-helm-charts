@@ -17,6 +17,7 @@ podAnnotations:
 
 containers: []
 imagePullSecrets: []
+imagePullSealedSecrets: []
 service: []
 # service:
 #   - fullName: "app"
@@ -105,3 +106,189 @@ volumes: []
 persistentVolumeClaim: []
 emptyDirs: []
 hostPaths: []
+verticalAutoscaling: {}
+
+oauth2Proxy:
+  enabled: false
+  appName: ""
+  nameOverride: ""
+  fullnameOverride: ""
+  labels: {}
+  podAnnotations: {}
+  containers: []
+  imagePullSecrets: []
+  imagePullSealedSecrets: []
+  service: []
+  replicaCount: 1
+  hostAliases: []
+  checkConnectionBeforeStart: []
+  extraInitContainers: []
+  secrets: {}
+  sealedSecrets: {}
+  configmap:
+    create: false
+    fromFiles: []
+    fromVariables: []
+  serviceMonitor: {}
+  autoscaling:
+    create: false
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+  deploymentStrategy: {}
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  securityContext: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  initContainers:
+    image: ghcr.io/perfect-art-doo/busybox:1.28
+    resources:
+      requests:
+        cpu: 10m
+        memory: 20Mi
+      limits:
+        cpu: 10m
+        memory: 20Mi
+    securityContext:
+      capabilities:
+        drop:
+          - all
+      privileged: false
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+  volumes: []
+  persistentVolumeClaim: []
+  emptyDirs: []
+  hostPaths: []
+  verticalAutoscaling: {}
+
+ui:
+  enabled: false
+  appName: ""
+  nameOverride: ""
+  fullnameOverride: ""
+  labels: {}
+  podAnnotations: {}
+  containers: []
+  imagePullSecrets: []
+  imagePullSealedSecrets: []
+  service: []
+  replicaCount: 1
+  hostAliases: []
+  checkConnectionBeforeStart: []
+  extraInitContainers: []
+  secrets: {}
+  sealedSecrets: {}
+  configmap:
+    create: false
+    fromFiles: []
+    fromVariables: []
+  serviceMonitor: {}
+  autoscaling:
+    create: false
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+  deploymentStrategy: {}
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  securityContext: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  initContainers:
+    image: ghcr.io/perfect-art-doo/busybox:1.28
+    resources:
+      requests:
+        cpu: 10m
+        memory: 20Mi
+      limits:
+        cpu: 10m
+        memory: 20Mi
+    securityContext:
+      capabilities:
+        drop:
+          - all
+      privileged: false
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+  volumes: []
+  persistentVolumeClaim: []
+  emptyDirs: []
+  hostPaths: []
+  verticalAutoscaling: {}
+
+bff:
+  enabled: false
+  appName: ""
+  nameOverride: ""
+  fullnameOverride: ""
+  labels: {}
+  podAnnotations: {}
+  containers: []
+  imagePullSecrets: []
+  imagePullSealedSecrets: []
+  service: []
+  replicaCount: 1
+  hostAliases: []
+  checkConnectionBeforeStart: []
+  extraInitContainers: []
+  secrets: {}
+  sealedSecrets: {}
+  configmap:
+    create: false
+    fromFiles: []
+    fromVariables: []
+  serviceMonitor: {}
+  autoscaling:
+    create: false
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+  deploymentStrategy: {}
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  securityContext: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  initContainers:
+    image: ghcr.io/perfect-art-doo/busybox:1.28
+    resources:
+      requests:
+        cpu: 10m
+        memory: 20Mi
+      limits:
+        cpu: 10m
+        memory: 20Mi
+    securityContext:
+      capabilities:
+        drop:
+          - all
+      privileged: false
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      seccompProfile:
+        type: RuntimeDefault
+  volumes: []
+  persistentVolumeClaim: []
+  emptyDirs: []
+  hostPaths: []
+  verticalAutoscaling: {}
+
+httpRoutes: []

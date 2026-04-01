@@ -1,15 +1,10 @@
-{{- $appName := include "app.fullname" . -}}
-{{- $appNamespace := .Release.Namespace }}
-{{- $appLabels := include "app.labels" . }}
-{{- range .Values.persistentVolumeClaim -}}
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: "{{ $appName }}-{{ .name }}"
-  namespace: {{ $appNamespace | quote }}
-  labels:
-    {{- $appLabels | nindent 4 }}
-spec:
-  {{- toYaml .spec | nindent 2 }}
+{{ include "app.renderPVC" (dict "root" . "values" .Values) }}
+{{- if .Values.oauth2Proxy.enabled }}
+{{ include "app.renderPVC" (dict "root" . "values" .Values.oauth2Proxy "component" "oauth2-proxy" "defaultName" "oauth2-proxy") }}
+{{- end }}
+{{- if .Values.ui.enabled }}
+{{ include "app.renderPVC" (dict "root" . "values" .Values.ui "component" "ui" "defaultName" "ui") }}
+{{- end }}
+{{- if .Values.bff.enabled }}
+{{ include "app.renderPVC" (dict "root" . "values" .Values.bff "component" "bff" "defaultName" "bff") }}
 {{- end }}

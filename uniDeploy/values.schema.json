@@ -1,606 +1,370 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
   "additionalProperties": false,
-  "properties": {
-    "affinity": {
-      "additionalProperties": false,
-      "required": [],
-      "title": "affinity",
+  "definitions": {
+    "genericObject": {
       "type": "object"
     },
-    "appName": {
-      "default": "",
-      "required": [],
-      "title": "appName",
-      "type": "string"
+    "genericArray": {
+      "type": "array",
+      "items": {}
+    },
+    "genericObjectOrArray": {
+      "type": [
+        "object",
+        "array"
+      ]
     },
     "autoscaling": {
+      "type": "object",
       "additionalProperties": false,
       "properties": {
         "create": {
-          "default": false,
-          "required": [],
-          "title": "create",
           "type": "boolean"
         },
-        "maxReplicas": {
-          "default": 10,
-          "required": [],
-          "title": "maxReplicas",
-          "type": "integer"
+        "enabled": {
+          "type": "boolean"
         },
         "minReplicas": {
-          "default": 1,
-          "required": [],
-          "title": "minReplicas",
+          "type": "integer"
+        },
+        "maxReplicas": {
           "type": "integer"
         },
         "targetCPUUtilizationPercentage": {
-          "default": 80,
-          "required": [],
-          "title": "targetCPUUtilizationPercentage",
           "type": "integer"
         },
         "targetMemoryUtilizationPercentage": {
-          "default": 80,
-          "required": [],
-          "title": "targetMemoryUtilizationPercentage",
           "type": "integer"
         }
-      },
-      "required": [
-        "create",
-        "minReplicas",
-        "maxReplicas",
-        "targetCPUUtilizationPercentage",
-        "targetMemoryUtilizationPercentage"
-      ],
-      "title": "autoscaling",
-      "type": "object"
-    },
-    "deploymentStrategy": {
-      "additionalProperties": false,
-      "properties": {
-        "rollingUpdate": {
-          "additionalProperties": false,
-          "required": [],
-          "title": "rollingUpdate",
-          "type": "object"
-        },
-        "type": {
-          "default": "RollingUpdate",
-          "required": [],
-          "title": "type",
-          "type": "string"
-        }
-      },
-      "required": [],
-      "title": "deploymentStrategy",
-      "type": "object"
-    },
-    "checkConnectionBeforeStart": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "checkConnectionBeforeStart",
-      "type": "array"
-    },
-    "extraInitContainers": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "extraInitContainers",
-      "type": "array"
+      }
     },
     "configmap": {
+      "type": "object",
       "additionalProperties": false,
       "properties": {
         "create": {
-          "default": false,
-          "required": [],
-          "title": "create",
           "type": "boolean"
         },
         "fromFiles": {
-          "items": {
-            "required": []
-          },
-          "required": [],
-          "title": "fromFiles",
-          "type": "array"
+          "$ref": "#/definitions/genericArray"
         },
         "fromVariables": {
-          "items": {
-            "required": []
-          },
-          "required": [],
-          "title": "fromVariables",
-          "type": "array"
+          "$ref": "#/definitions/genericArray"
         }
-      },
-      "required": [
-        "create",
-        "fromFiles",
-        "fromVariables"
-      ],
-      "title": "configmap",
-      "type": "object"
+      }
     },
-    "containers": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "containers",
-      "type": "array"
-    },
-    "emptyDirs": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "emptyDirs",
-      "type": "array"
-    },
-    "fullnameOverride": {
-      "default": "",
-      "required": [],
-      "title": "fullnameOverride",
-      "type": "string"
-    },
-    "global": {
-      "description": "Global values are values that can be accessed from any chart or subchart by exactly the same name.",
-      "required": [],
-      "title": "global",
-      "type": "object"
-    },
-    "hostAliases": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "hostAliases",
-      "type": "array"
-    },
-    "hostPaths": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "hostPaths",
-      "type": "array"
-    },
-    "imagePullSecrets": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "imagePullSecrets",
-      "type": "array"
-    },
-    "ingress": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "ingress",
-      "type": "array"
+    "serviceAccount": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "create": {
+          "type": "boolean"
+        },
+        "annotations": {
+          "$ref": "#/definitions/genericObject"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
     },
     "initContainers": {
+      "type": "object",
       "additionalProperties": false,
       "properties": {
         "image": {
-          "default": "ghcr.io/perfect-art-doo/busybox:1.28",
-          "required": [],
-          "title": "image",
           "type": "string"
         },
         "resources": {
-          "additionalProperties": false,
-          "properties": {
-            "limits": {
-              "additionalProperties": false,
-              "properties": {
-                "cpu": {
-                  "default": "10m",
-                  "required": [],
-                  "title": "cpu",
-                  "type": "string"
-                },
-                "memory": {
-                  "default": "20Mi",
-                  "required": [],
-                  "title": "memory",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cpu",
-                "memory"
-              ],
-              "title": "limits",
-              "type": "object"
-            },
-            "requests": {
-              "additionalProperties": false,
-              "properties": {
-                "cpu": {
-                  "default": "10m",
-                  "required": [],
-                  "title": "cpu",
-                  "type": "string"
-                },
-                "memory": {
-                  "default": "20Mi",
-                  "required": [],
-                  "title": "memory",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "cpu",
-                "memory"
-              ],
-              "title": "requests",
-              "type": "object"
-            }
-          },
-          "required": [
-            "requests",
-            "limits"
-          ],
-          "title": "resources",
-          "type": "object"
+          "$ref": "#/definitions/genericObject"
         },
         "securityContext": {
-          "additionalProperties": false,
-          "properties": {
-            "allowPrivilegeEscalation": {
-              "default": false,
-              "required": [],
-              "title": "allowPrivilegeEscalation",
-              "type": "boolean"
-            },
-            "capabilities": {
-              "additionalProperties": false,
-              "properties": {
-                "drop": {
-                  "items": {
-                    "anyOf": [
-                      {
-                        "required": [],
-                        "type": "string"
-                      }
-                    ],
-                    "required": []
-                  },
-                  "required": [],
-                  "title": "drop",
-                  "type": "array"
-                }
-              },
-              "required": [
-                "drop"
-              ],
-              "title": "capabilities",
-              "type": "object"
-            },
-            "privileged": {
-              "default": false,
-              "required": [],
-              "title": "privileged",
-              "type": "boolean"
-            },
-            "readOnlyRootFilesystem": {
-              "default": true,
-              "required": [],
-              "title": "readOnlyRootFilesystem",
-              "type": "boolean"
-            },
-            "seccompProfile": {
-              "additionalProperties": false,
-              "properties": {
-                "type": {
-                  "default": "RuntimeDefault",
-                  "required": [],
-                  "title": "type",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "type"
-              ],
-              "title": "seccompProfile",
-              "type": "object"
-            }
-          },
-          "required": [
-            "capabilities",
-            "privileged",
-            "allowPrivilegeEscalation",
-            "readOnlyRootFilesystem",
-            "seccompProfile"
-          ],
-          "title": "securityContext",
-          "type": "object"
+          "$ref": "#/definitions/genericObject"
         }
-      },
-      "required": [
-        "image",
-        "resources",
-        "securityContext"
-      ],
-      "title": "initContainers",
-      "type": "object"
+      }
     },
-    "labels": {
+    "verticalAutoscaling": {
+      "type": "object",
       "additionalProperties": false,
       "properties": {
-        "app.kubernetes.io/project": {
-          "default": "",
-          "required": [],
-          "title": "app.kubernetes.io/project",
-          "type": "string"
-        },
-        "app.kubernetes.io/version": {
-          "default": "",
-          "required": [],
-          "title": "app.kubernetes.io/version",
-          "type": "string"
-        },
-        "deploy-date": {
-          "default": "",
-          "required": [],
-          "title": "deploy-date",
-          "type": "string"
-        },
-        "version": {
-          "default": "",
-          "required": [],
-          "title": "version",
-          "type": "string"
-        }
-      },
-      "required": [
-        "app.kubernetes.io/project",
-        "app.kubernetes.io/version",
-        "version",
-        "deploy-date"
-      ],
-      "title": "labels",
-      "type": "object"
-    },
-    "nameOverride": {
-      "default": "",
-      "required": [],
-      "title": "nameOverride",
-      "type": "string"
-    },
-    "nodeSelector": {
-      "additionalProperties": false,
-      "required": [],
-      "title": "nodeSelector",
-      "type": "object"
-    },
-    "podAnnotations": {
-      "additionalProperties": false,
-      "properties": {
-        "sidecar.istio.io/proxyCPU": {
-          "default": "",
-          "required": [],
-          "title": "sidecar.istio.io/proxyCPU",
-          "type": "string"
-        },
-        "sidecar.istio.io/proxyMemory": {
-          "default": "",
-          "required": [],
-          "title": "sidecar.istio.io/proxyMemory",
-          "type": "string"
-        }
-      },
-      "required": [
-        "sidecar.istio.io/proxyCPU",
-        "sidecar.istio.io/proxyMemory"
-      ],
-      "title": "podAnnotations",
-      "type": "object"
-    },
-    "replicaCount": {
-      "default": 1,
-      "required": [],
-      "title": "replicaCount",
-      "type": "integer"
-    },
-    "sealedSecrets": {
-      "additionalProperties": false,
-      "required": [],
-      "title": "sealedSecrets",
-      "type": "object"
-    },
-    "secrets": {
-      "additionalProperties": false,
-      "description": "imagePullSecrets:\n  - name: \"github-imagepullsecret\"\n    base64Secret: \"\"",
-      "required": [],
-      "title": "secrets",
-      "type": "object"
-    },
-    "securityContext": {
-      "additionalProperties": false,
-      "properties": {
-        "fsGroup": {
-          "required": [],
-          "title": "fsGroup",
-          "type": "integer"
-        },
-        "fsGroupChangePolicy": {
-          "required": [],
-          "title": "fsGroupChangePolicy",
-          "type": "string"
-        },
-        "runAsGroup": {
-          "required": [],
-          "title": "runAsGroup",
-          "type": "integer"
-        },
-        "runAsNonRoot": {
-          "required": [],
-          "title": "runAsNonRoot",
-          "type": "boolean"
-        },
-        "runAsUser": {
-          "required": [],
-          "title": "runAsUser",
-          "type": "integer"
-        },
-        "supplementalGroups": {
-          "items": {
-            "required": [],
-            "type": "integer"
-          },
-          "required": [],
-          "title": "supplementalGroups",
-          "type": "array"
-        }
-      },
-      "required": [],
-      "title": "securityContext",
-      "type": "object"
-    },
-    "service": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "service",
-      "type": "array"
-    },
-    "serviceAccount": {
-      "additionalProperties": false,
-      "properties": {
-        "annotations": {
-          "additionalProperties": false,
-          "required": [],
-          "title": "annotations",
-          "type": "object"
-        },
         "create": {
-          "default": false,
-          "required": [],
-          "title": "create",
           "type": "boolean"
+        },
+        "controlledValues": {
+          "type": "string"
+        },
+        "minMemory": {
+          "type": "string"
+        },
+        "maxMemory": {
+          "type": "string"
+        },
+        "updateMode": {
+          "type": "string"
+        }
+      }
+    },
+    "httpRoute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "apiVersion": {
+          "type": "string"
         },
         "name": {
-          "default": "",
-          "required": [],
-          "title": "name",
           "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "labels": {
+          "$ref": "#/definitions/genericObject"
+        },
+        "annotations": {
+          "$ref": "#/definitions/genericObject"
+        },
+        "parentRefs": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "hostnames": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "rules": {
+          "$ref": "#/definitions/genericArray"
         }
-      },
-      "required": [
-        "create",
-        "annotations",
-        "name"
-      ],
-      "title": "serviceAccount",
-      "type": "object"
+      }
     },
-    "serviceEntries": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "serviceEntries",
-      "type": "array"
-    },
-    "serviceMonitor": {
+    "componentWorkload": {
+      "type": "object",
       "additionalProperties": false,
-      "required": [],
-      "title": "serviceMonitor",
-      "type": "object"
-    },
-    "tlsSecrets": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "tlsSecrets",
-      "type": "array"
-    },
-    "tolerations": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "tolerations",
-      "type": "array"
-    },
-    "useIstio": {
-      "default": false,
-      "required": [],
-      "title": "useIstio",
-      "type": "boolean"
-    },
-    "volumes": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "volumes",
-      "type": "array"
-    },
-    "persistentVolumeClaim": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "persistentVolumeClaim",
-      "type": "array"
-    },
-    "virtualServices": {
-      "items": {
-        "required": []
-      },
-      "required": [],
-      "title": "virtualServices",
-      "type": "array"
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "appName": {
+          "type": "string"
+        },
+        "nameOverride": {
+          "type": "string"
+        },
+        "fullnameOverride": {
+          "type": "string"
+        },
+        "labels": {
+          "$ref": "#/definitions/genericObject"
+        },
+        "podAnnotations": {
+          "$ref": "#/definitions/genericObject"
+        },
+        "containers": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "imagePullSecrets": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "imagePullSealedSecrets": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "service": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "replicaCount": {
+          "type": "integer"
+        },
+        "hostAliases": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "checkConnectionBeforeStart": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "extraInitContainers": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "secrets": {
+          "$ref": "#/definitions/genericObjectOrArray"
+        },
+        "sealedSecrets": {
+          "$ref": "#/definitions/genericObjectOrArray"
+        },
+        "configmap": {
+          "$ref": "#/definitions/configmap"
+        },
+        "serviceMonitor": {
+          "$ref": "#/definitions/genericObjectOrArray"
+        },
+        "autoscaling": {
+          "$ref": "#/definitions/autoscaling"
+        },
+        "deploymentStrategy": {
+          "$ref": "#/definitions/genericObject"
+        },
+        "serviceAccount": {
+          "$ref": "#/definitions/serviceAccount"
+        },
+        "securityContext": {
+          "$ref": "#/definitions/genericObject"
+        },
+        "nodeSelector": {
+          "$ref": "#/definitions/genericObject"
+        },
+        "tolerations": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "affinity": {
+          "$ref": "#/definitions/genericObject"
+        },
+        "initContainers": {
+          "$ref": "#/definitions/initContainers"
+        },
+        "volumes": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "persistentVolumeClaim": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "emptyDirs": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "hostPaths": {
+          "$ref": "#/definitions/genericArray"
+        },
+        "verticalAutoscaling": {
+          "$ref": "#/definitions/verticalAutoscaling"
+        },
+        "automountServiceAccountToken": {
+          "type": "boolean"
+        }
+      }
     }
   },
-  "required": [
-    "appName",
-    "nameOverride",
-    "fullnameOverride",
-    "labels",
-    "podAnnotations",
-    "containers",
-    "imagePullSecrets",
-    "service",
-    "replicaCount",
-    "hostAliases",
-    "checkConnectionBeforeStart",
-    "extraInitContainers",
-    "secrets",
-    "sealedSecrets",
-    "configmap",
-    "tlsSecrets",
-    "serviceMonitor",
-    "ingress",
-    "autoscaling",
-    "deploymentStrategy",
-    "serviceAccount",
-    "securityContext",
-    "nodeSelector",
-    "tolerations",
-    "affinity",
-    "useIstio",
-    "initContainers",
-    "serviceEntries",
-    "volumes",
-    "persistentVolumeClaim",
-    "virtualServices",
-    "emptyDirs",
-    "hostPaths"
-  ],
-  "type": "object"
+  "properties": {
+    "global": {
+      "$ref": "#/definitions/genericObject"
+    },
+    "appName": {
+      "type": "string"
+    },
+    "nameOverride": {
+      "type": "string"
+    },
+    "fullnameOverride": {
+      "type": "string"
+    },
+    "labels": {
+      "$ref": "#/definitions/genericObject"
+    },
+    "podAnnotations": {
+      "$ref": "#/definitions/genericObject"
+    },
+    "containers": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "imagePullSecrets": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "imagePullSealedSecrets": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "service": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "replicaCount": {
+      "type": "integer"
+    },
+    "hostAliases": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "checkConnectionBeforeStart": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "extraInitContainers": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "secrets": {
+      "$ref": "#/definitions/genericObjectOrArray"
+    },
+    "sealedSecrets": {
+      "$ref": "#/definitions/genericObjectOrArray"
+    },
+    "configmap": {
+      "$ref": "#/definitions/configmap"
+    },
+    "tlsSecrets": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "serviceMonitor": {
+      "$ref": "#/definitions/genericObjectOrArray"
+    },
+    "ingress": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "autoscaling": {
+      "$ref": "#/definitions/autoscaling"
+    },
+    "deploymentStrategy": {
+      "$ref": "#/definitions/genericObject"
+    },
+    "serviceAccount": {
+      "$ref": "#/definitions/serviceAccount"
+    },
+    "securityContext": {
+      "$ref": "#/definitions/genericObject"
+    },
+    "nodeSelector": {
+      "$ref": "#/definitions/genericObject"
+    },
+    "tolerations": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "affinity": {
+      "$ref": "#/definitions/genericObject"
+    },
+    "useIstio": {
+      "type": "boolean"
+    },
+    "initContainers": {
+      "$ref": "#/definitions/initContainers"
+    },
+    "serviceEntries": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "virtualServices": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "volumes": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "persistentVolumeClaim": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "emptyDirs": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "hostPaths": {
+      "$ref": "#/definitions/genericArray"
+    },
+    "verticalAutoscaling": {
+      "$ref": "#/definitions/verticalAutoscaling"
+    },
+    "automountServiceAccountToken": {
+      "type": "boolean"
+    },
+    "oauth2Proxy": {
+      "$ref": "#/definitions/componentWorkload"
+    },
+    "ui": {
+      "$ref": "#/definitions/componentWorkload"
+    },
+    "bff": {
+      "$ref": "#/definitions/componentWorkload"
+    },
+    "httpRoutes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/httpRoute"
+      }
+    }
+  }
 }

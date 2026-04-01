@@ -1,17 +1,10 @@
-{{- if not (and (hasKey .Values "verticalAutoscaling") (hasKey .Values.verticalAutoscaling "create") (eq .Values.verticalAutoscaling.create true)) }}
-{{- if .Values.containers -}}
-{{ $appName := include "app.fullname" . }}
-apiVersion: policy/v1
-kind: PodDisruptionBudget
-metadata:
-  name: {{ $appName | quote }}
-  namespace: {{ .Release.Namespace | quote }}
-  labels:
-    {{- include "app.labels" . | nindent 4 }}
-spec:
-  maxUnavailable: 0
-  selector:
-    matchLabels:
-      {{- include "app.selectorLabels" . | nindent 6 }}
+{{ include "app.renderPDB" (dict "root" . "values" .Values) }}
+{{- if .Values.oauth2Proxy.enabled }}
+{{ include "app.renderPDB" (dict "root" . "values" .Values.oauth2Proxy "component" "oauth2-proxy" "defaultName" "oauth2-proxy") }}
 {{- end }}
+{{- if .Values.ui.enabled }}
+{{ include "app.renderPDB" (dict "root" . "values" .Values.ui "component" "ui" "defaultName" "ui") }}
+{{- end }}
+{{- if .Values.bff.enabled }}
+{{ include "app.renderPDB" (dict "root" . "values" .Values.bff "component" "bff" "defaultName" "bff") }}
 {{- end }}
