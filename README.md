@@ -47,7 +47,7 @@ helm repo index .
 
 ## uniDeploy CHANGELOG
 
-### [0.2.13]
+### [0.2.14]
 Add httproute, oauth2-proxy, bff, ui
 
 ### [0.2.13]
